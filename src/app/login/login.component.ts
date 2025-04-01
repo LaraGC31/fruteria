@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Output, EventEmitter } from '@angular/core';
+import { Component, OnInit,Output, EventEmitter  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {UsuarioService} from '../services/usuarios/usuario.service';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -18,7 +18,8 @@ usuario:any = {};
 @Output() enviarUsuario = new EventEmitter<any>();
 
 constructor(
-  private usuarioService: UsuarioService){}
+  private usuarioService: UsuarioService,   
+){}
 
   
 ngOnInit(): void {

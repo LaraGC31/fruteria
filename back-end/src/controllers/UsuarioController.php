@@ -22,7 +22,7 @@ class UsuarioController{
                 "email" => $usuario->email,
                 "provincia" => $usuario->provincia,
                 "direccion" => $usuario->direccion,
-                "codPostal" => $usuario->codPos,
+                "codPostal" => $usuario->codPostal,
                 "telefono" => $usuario->telefono,
             );
             

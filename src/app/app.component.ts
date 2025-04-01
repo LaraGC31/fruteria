@@ -1,7 +1,5 @@
-import { Component, HostListener, OnInit  } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {RouterLink} from '@angular/router';
-import { RouterLinkActive } from '@angular/router';
 import { Router } from '@angular/router'; 
 import { DataSignalService } from './services/data-signal/data-signal.service';
 import { Location } from '@angular/common';
@@ -9,30 +7,34 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-cerrarSesion() {
-throw new Error('Method not implemented.');
-}
-  title = 'fruteria';
-  constructor(private dataService: DataSignalService,
-    private router: Router,
-    private location: Location){
-
+  registro(): void {
+    this.router.navigate(['/registro']);
+  
   }
+  login(): void {
+    this.router.navigate(['/login']); 
+  
+  }
+  title = 'fruteria';
   usuario: any = {id: null, nombre: "", email: "", rol: ""};
 
-  login(){
-    this.router.navigate(['/login']); 
+  constructor(private dataService: DataSignalService,
+    private router: Router,
+    private location: Location){}
+
+  ngOnInit(){
+   
+ this.cargarUsuario();
+  
   }
-  registro(){
-    this.router.navigate(['/registro']);
-  }
-  let id = localStorage.getItem("id");
-    let nombre = localStorage.getItem("nombre");
+  cargarUsuario() :void{
+    let id = localStorage.getItem("id");
+    let nombre = localStorage.getItem("nombreApellidos");
     let email = localStorage.getItem("email");
     let rol = localStorage.getItem("rol");
     
@@ -47,18 +49,20 @@ throw new Error('Method not implemented.');
       this.usuario.email = email;
       this.usuario.rol = rol;
       this.sendUsuario();
+      
   }
-  recibirUsuario(usuario: any) {
+  }
+  recibirUsuario(usuario: any): void {
     this.usuario = usuario;
     localStorage.setItem("id", usuario.id);
-    localStorage.setItem("nombre", usuario.nombre);
+    localStorage.setItem("nombreApellidos", usuario.nombre);
     localStorage.setItem("email", usuario.email);
     localStorage.setItem("rol", usuario.rol);
     
     this.sendUsuario();
   }
 
-  sendUsuario() {
+  sendUsuario(): void {
     this.dataService.setId(this.usuario.id);
     this.dataService.setNombre(this.usuario.nombre);
   }
