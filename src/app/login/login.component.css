@@ -1,0 +1,26 @@
+#general{
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+width: 100%;
+margin-top:15vh ;
+}
+form{
+    background-color: antiquewhite;
+    width: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+label{
+    font-size: 3vh;
+    text-align: center;
+}
+
+input[type="submit"]{
+    width: 15vh;
+    height: 7vh;
+    background-color: greenyellow;
+}

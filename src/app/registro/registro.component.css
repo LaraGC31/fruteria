@@ -1,0 +1,43 @@
+#general{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    }
+    form{
+        background-color: antiquewhite;
+        width: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    label{
+        font-size: 3vh;
+        text-align: center;
+        margin: 2vh;
+    }
+    
+    input[type="submit"]{
+        width: 15vh;
+        height: 7vh;
+        background-color: greenyellow;
+    }
+
+    #acierto{
+  
+        background-color: green;
+        border-top-left-radius: 15vh;
+        border-top-right-radius: 15vh;
+        border-bottom-right-radius: 15vh;
+        border-bottom-left-radius: 15vh;
+        color: white;
+    }
+    #errores{
+        border: 1px solid black;
+        width: 45vh;
+        height: 5vh;
+        background-color: red;
+        color: white;
+    }

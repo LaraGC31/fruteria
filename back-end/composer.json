@@ -1,0 +1,26 @@
+{
+    "name": "larit/proyecto",
+    "description": "Proyecto de fin de grado",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Larit\\Proyecto\\Config\\": "src/config",
+            "Larit\\Proyecto\\Controllers\\": "src/controllers",
+            "Larit\\Proyecto\\Database\\": "src/database",
+            "Larit\\Proyecto\\Helpers\\": "src/helpers",
+            "Larit\\Proyecto\\Models\\": "src/models"
+
+        }
+    },
+    "authors": [
+        {
+            "name": "lara",
+            "email": "larita.gonzal.carranco@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.8",
+        "stefangabos/zebra_pagination": "^2.4"
+    }
+}

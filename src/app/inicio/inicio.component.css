@@ -1,0 +1,23 @@
+#general{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    width: 100%;
+    margin-top: 10vh;
+    
+}
+
+#foto img{
+    width: 100%;
+}
+#texto{
+    text-align: center;
+    font-size: 3vh;
+}
+button{
+    width: 15vh;
+    height: 7vh;
+    background-color: rgb(251, 54, 74);
+    margin: 15vh;
+}

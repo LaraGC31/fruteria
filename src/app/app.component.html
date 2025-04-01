@@ -1,0 +1,32 @@
+<div id="general">
+    <nav class="navbar">
+    <ul class="nav-links">
+      <li>
+        <a href="#" routerLink="/inicio">Inicio</a>
+      </li>
+      <li>
+        <a href="#" routerLink="/fruta">Fruta</a>
+      </li>
+      <li>
+        <a href="#" routerLink="/verdura">Verdura</a>
+      </li>
+    </ul>
+    <ul class="nav-icons">
+      <li>
+        <a href="#" routerLink="/carrito"><img src="../assets/carrito.png" alt="lo"></a>
+      </li>
+      @if(usuario.id != null && usuario.nombre != "" && usuario.email != "" && usuario.rol != ""){
+        <p id="usuarioNombreM">{{usuario.nombre}}</p>
+        <button id="cerrarM" (click)="cerrarSesion()">Cerrar Sesión</button>
+    }@else {
+      <li>
+        <button (click)="login()">Login In</button>
+        <button (click)="registro()">Registro</button>
+      </li>
+    }
+    </ul>
+  </nav>
+<router-outlet></router-outlet>
+
+  </div>
+
