@@ -12,14 +12,26 @@
       </li>
     </ul>
     <ul class="nav-icons">
-      <li>
-        <a href="#" routerLink="/carrito"><img src="../assets/carrito.png" alt="lo"></a>
-      </li>
       @if(usuarioId != null && usuarioEmail != ""){
-        <li>
-        <p id="usuarioNombreM">{{usuarioEmail}}</p>
-        <button id="cerrarM" (click)="cerrarSesion()">Cerrar Sesión</button>
-      </li>
+        @if(usuarioRol == 'A'){
+          <li id="colocar">
+            <a href="#" routerLink="/ver-pedidos">Ver pedidos</a>
+          </li>
+            <li>
+            <p id="usuarioNombre">{{usuarioNombre}}</p>
+            <button id="cerrar" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </li>
+        }@else {
+          <li>
+            <a href="#" routerLink="/carrito"><img src="../assets/carrito.png" alt="lo"></a>
+          </li>
+        
+          <li>
+            <p id="usuarioNombre">{{usuarioNombre}}</p>
+            <button id="cerrar" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </li>
+        }
+      
     }@else {
       <li>
         <button (click)="login()">Login In</button>

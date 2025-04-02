@@ -6,7 +6,7 @@ import {UsuarioComponent} from './usuario/usuario.component';
 import {CarritoComponent} from './carrito/carrito.component';
 import {LoginComponent} from './login/login.component';
 import {RegistroComponent} from './registro/registro.component';
-
+import {VerPedidosComponent} from './ver-pedidos/ver-pedidos.component';
 export const routes: Routes = [
 
 {path:"verdura", component:VerduraComponent},    
@@ -15,6 +15,7 @@ export const routes: Routes = [
 {path:"perfil-usuario", component:UsuarioComponent},
 {path:"carrito", component:CarritoComponent},   
 {path:"login", component:LoginComponent},   
-{path:"registro", component:RegistroComponent}   
+{path:"registro", component:RegistroComponent},   
+{path:"ver-pedidos", component:VerPedidosComponent}   
 
 ];

@@ -25,14 +25,31 @@ padding: 2vh;
 }
 .nav-icons a{
   text-decoration: none;
-  font-size: 3vh;
+  font-size: 2vh;
 }
 .nav-icons img{
-  width: 5vh;
+  width: 10vh;
+}
+#colocar{
+  margin-top: 3.5vh;
+  font-weight: bold;
+
 }
 button{
   width: 10vh;
   height: 5vh;
-  background-color: rgb(251, 54, 74);
+  background-color: rgb(236, 98, 112);
 margin: 1vh;
+}
+#cerrar{
+  width: 10vh;
+  height: 5vh;
+  margin: 0;
+border-top-left-radius: 2vh;
+border-top-right-radius: 2vh;
+border-bottom-right-radius: 2vh;
+border-bottom-left-radius: 2vh;
+}
+#usuarioNombre{
+  font-size: 2vh;
 }

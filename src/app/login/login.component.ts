@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit{
 id:any
 email:string = '';
 password:string = '';
+nombre:string ='';
+rol:string ='';
 usuario:any = {};
  
 @Output() enviarUsuario = new EventEmitter<any>();
@@ -40,18 +42,25 @@ onSubmit(): void {
   this.usuarioService.login(this.email, this.password).subscribe((data) => {
     this.enviarUsuario.emit(data);
     this.id = data.id;
-    this.guardarUsuario();
+    this.nombre = data.nombre;
+    this.rol = data.rol;
+    this.guardarUsuario(data);
+
   });
 }
 
-guardarUsuario() {
+guardarUsuario(usuario: any) {
   if (this.email && this.password) {
-    localStorage.setItem('id', this.id);
-    localStorage.setItem('email', this.email);
-    localStorage.setItem('password', this.password);
+    localStorage.setItem('id', usuario.id);
+    localStorage.setItem('email', usuario.email);
+    localStorage.setItem('nombreApellidos', usuario.nombre);
+    localStorage.setItem('rol', usuario.rol);
+    localStorage.setItem('password', usuario.password);
   }
   this.dataSignalService.setId(this.id);
   this.dataSignalService.setEmail(this.email);
+  this.dataSignalService.setNombre(this.nombre);
+  this.dataSignalService.setRol(this.rol);
 
 }
 }

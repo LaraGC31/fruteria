@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  baseUrl = 'http://localhost/fruteria/back-end/';
+  baseUrl = 'http://localhost/proyecto/back-end/';
 
   constructor(private http: HttpClient) {}
   login(email: string, password: string): Observable<any> {

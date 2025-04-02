@@ -31,6 +31,12 @@ export class AppComponent implements OnInit {
   get usuarioId():number|null {
     return this.dataService.getId();
   }
+  get usuarioNombre(): string{
+    return this.dataService.getNombre();
+  }
+  get usuarioRol():string {
+    return this.dataService.getRol();
+  }
   cargarUsuario() :void{
     let id = localStorage.getItem("id");
     let nombre = localStorage.getItem("nombreApellidos");
@@ -65,6 +71,8 @@ export class AppComponent implements OnInit {
   sendUsuario(): void {
     this.dataService.setId(this.usuario.id);
     this.dataService.setEmail(this.usuario.email);
+    this.dataService.setRol(this.usuario.rol);
+    this.dataService.setNombre(this.usuario.nombre);
   }
   registro() {
     this.router.navigate(['/registro']);
