@@ -3,23 +3,16 @@ import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router'; 
 import { DataSignalService } from './services/data-signal/data-signal.service';
 import { Location } from '@angular/common';
-
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  registro(): void {
-    this.router.navigate(['/registro']);
-  
-  }
-  login(): void {
-    this.router.navigate(['/login']); 
-  
-  }
+
   title = 'fruteria';
   usuario: any = {id: null, nombre: "", email: "", rol: ""};
 
@@ -32,12 +25,19 @@ export class AppComponent implements OnInit {
  this.cargarUsuario();
   
   }
+  get usuarioEmail(): string{
+    return this.dataService.getEmail();
+  }
+  get usuarioId():number|null {
+    return this.dataService.getId();
+  }
   cargarUsuario() :void{
     let id = localStorage.getItem("id");
     let nombre = localStorage.getItem("nombreApellidos");
     let email = localStorage.getItem("email");
     let rol = localStorage.getItem("rol");
-    
+
+  
 
     if (email != 'undefined' && email != null 
       && nombre != 'undefined' && nombre != null
@@ -64,9 +64,17 @@ export class AppComponent implements OnInit {
 
   sendUsuario(): void {
     this.dataService.setId(this.usuario.id);
-    this.dataService.setNombre(this.usuario.nombre);
+    this.dataService.setEmail(this.usuario.email);
   }
-  cerrarSesion() {
+  registro() {
+    this.router.navigate(['/registro']);
+  
+  }
+  login() {
+    this.router.navigate(['/login']); 
+  
+  }
+  cerrarSesion():void {
     localStorage.clear();
 
     this.router.navigate(['/']);
