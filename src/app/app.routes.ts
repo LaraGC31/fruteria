@@ -12,6 +12,7 @@ export const routes: Routes = [
 {path:"verdura", component:VerduraComponent},    
 {path:"fruta", component:FrutaComponent},   
 {path:"inicio", component:InicioComponent},    
+{path:"", component:InicioComponent},    
 {path:"perfil-usuario", component:UsuarioComponent},
 {path:"carrito", component:CarritoComponent},   
 {path:"login", component:LoginComponent},   

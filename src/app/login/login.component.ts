@@ -1,6 +1,7 @@
 import { Component, OnInit,Output, EventEmitter  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {UsuarioService} from '../services/usuarios/usuario.service';
+import { Router } from '@angular/router'; 
 import { DataSignalService } from '../services/data-signal/data-signal.service';
 @Component({
   selector: 'app-login',
@@ -21,7 +22,8 @@ usuario:any = {};
 
 constructor(
   private usuarioService: UsuarioService,   
-  private dataSignalService: DataSignalService
+  private dataSignalService: DataSignalService,
+  private router: Router
 ){}
 
   
@@ -61,6 +63,7 @@ guardarUsuario(usuario: any) {
   this.dataSignalService.setEmail(this.email);
   this.dataSignalService.setNombre(this.nombre);
   this.dataSignalService.setRol(this.rol);
+  this.router.navigate(['/inicio']); 
 
 }
 }
