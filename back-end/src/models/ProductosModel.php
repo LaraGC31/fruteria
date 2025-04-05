@@ -37,7 +37,7 @@ class ProductosModel extends Model{
 
         } catch (\PDOException $e) {
             echo '<p> Excepcion' . $e->getMessage() . '</p>';
-            
+            echo "<p>" .var_dump($atributos) . "</p>";
             return NULL;
         }  
     }

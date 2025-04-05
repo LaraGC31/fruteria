@@ -1,7 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import {environment} from '../../environments/environment';
 @Component({
   selector: 'app-fruta',
   imports: [FormsModule],
@@ -17,7 +17,6 @@ precio:any = '';
 foto:string = '';
 selectedFile: File | null = null;
 dataRegistros : any = '';
-baseUrl = 'http://localhost/proyecto/back-end/';
 
   constructor(private http: HttpClient){}
 
@@ -30,7 +29,7 @@ baseUrl = 'http://localhost/proyecto/back-end/';
   ngOnInit(){
 
   }
-  onSubmit(){
+  onSubmit(): void{
     const formData = new FormData();
     if (this.selectedFile) {
       formData.append('foto', this.selectedFile);
@@ -45,7 +44,7 @@ baseUrl = 'http://localhost/proyecto/back-end/';
 
     this.http
       .post(
-        `${this.baseUrl}Productos/aniadirProductos`,
+        `${environment.baseUrl}Productos/aniadirProductos`,
         formData
       )
       .subscribe((data) => {

@@ -1,17 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
 
-  baseUrl = 'http://localhost/proyecto/back-end/';
 
   constructor(private http: HttpClient) {}
   login(email: string, password: string): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}Usuario/login?email=${email}&password=${password}`
+      `${environment.baseUrl}Usuario/login?email=${email}&password=${password}`
     );
   }
 
@@ -26,7 +26,7 @@ export class UsuarioService {
 
   ): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}Usuario/aniadirUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}`
+      `${environment.baseUrl}Usuario/aniadirUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}`
     );
   }
 }
