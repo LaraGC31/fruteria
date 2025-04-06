@@ -2,6 +2,10 @@ import { Component,OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import { DataSignalService } from '../services/data-signal/data-signal.service';
+import {ProductosService} from '../services/productos/productos.service';
+import { Router } from '@angular/router'; 
+
 @Component({
   selector: 'app-fruta',
   imports: [FormsModule],
@@ -9,54 +13,38 @@ import {environment} from '../../environments/environment';
   styleUrl: './fruta.component.css'
 })
 export class FrutaComponent  implements OnInit{
-nombre:string = '';
-stock:any = '';
-idCategoria:any = '';
-descripcion:string = '';
-precio:any = '';
-foto:string = '';
-selectedFile: File | null = null;
-dataRegistros : any = '';
+data:any = '';
+  constructor(private http: HttpClient, private dataService: DataSignalService, 
+    private router: Router, private productosService: ProductosService
 
-  constructor(private http: HttpClient){}
+  ){}
 
-  onFileSelected(event: any) {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.selectedFile = input.files[0];
-    }
-  }
+
   ngOnInit(){
-
+    this.getProductosByFrutas();
   }
-  onSubmit(): void{
-    const formData = new FormData();
-    if (this.selectedFile) {
-      formData.append('foto', this.selectedFile);
-    }
+  
 
-    formData.append('nombre', this.nombre);
-    formData.append('idCategoria', this.idCategoria);
-    formData.append('stock', this.stock);
-    formData.append('descripcion', this.descripcion);
-    formData.append('precio', this.precio);
-    
-
-    this.http
-      .post(
-        `${environment.baseUrl}Productos/aniadirProductos`,
-        formData
-      )
-      .subscribe((data) => {
-        this.dataRegistros = data;
-
-        this.selectedFile = null;
-
-       this.nombre = '';
-       this.idCategoria = '';
-       this.stock = '';
-       this.descripcion = '';
-       this.precio = '';
-      });
+  
+  get usuarioEmail(): string{
+    return this.dataService.getEmail();
   }
+  get usuarioId():number|null {
+    return this.dataService.getId();
+  }
+  get usuarioNombre(): string{
+    return this.dataService.getNombre();
+  }
+  get usuarioRol():string {
+    return this.dataService.getRol();
+  }
+  aniadirFV(){
+    this.router.navigate(['/aniadirFV']); 
+  }
+  getProductosByFrutas(){
+    this.productosService.getProductosByFruta().subscribe((data)=>{
+      this.data = data
+    })
+  }
+ 
 }

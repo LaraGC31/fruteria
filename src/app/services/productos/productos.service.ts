@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {environment} from '../../../environments/environment';
 
@@ -24,5 +23,11 @@ export class ProductosService {
     return this.http.get(
       `${environment.baseUrl}Productos/aniadirProductos?nombre=${nombre}&idCategoria=${idCategoria}&stock=${stock}&foto=${foto}&descripcion=${descripcion}&precio=${precio}`
     );
+  }
+  getProductosByFruta(){
+    return this.http.get(`${environment.baseUrl}Productos/getProductosByFruta`);
+  }
+  getProductosByVerdura(){
+    return this.http.get(`${environment.baseUrl}Productos/getProductosByVerdura`);
   }
 }

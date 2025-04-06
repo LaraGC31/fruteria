@@ -1,6 +1,6 @@
 <?php
 namespace Larit\Proyecto\Models;
-use Larit\Proyecto\Models;
+use Larit\Proyecto\Models\Model;
 
 
 class ProductosModel extends Model{
@@ -41,5 +41,36 @@ class ProductosModel extends Model{
             return NULL;
         }  
     }
+    public function getProductosByFruta(){
+        try {
+        
+            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'fruta'";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+            $sentencia->execute();
+          
+            $resultado = $sentencia->fetchAll();
+            return $resultado;
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
 
+        }
+    }
+    public function getProductosByVerdura(){
+        try {
+        
+            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'verdura'";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+            $sentencia->execute();
+          
+            $resultado = $sentencia->fetchAll();
+            return $resultado;
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
 }

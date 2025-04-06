@@ -43,4 +43,16 @@ class ProductosController{
         header('Content-Type: application/json');
         echo json_encode($dataRegistros); 
     }
+    public function getProductosByFruta() {
+        $productosModel = new ProductosModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($productosModel->getProductosByFruta());
+    }
+    public function getProductosByVerdura() {
+        $productosModel = new ProductosModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($productosModel->getProductosByVerdura());
+    }
 }

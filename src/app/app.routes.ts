@@ -7,6 +7,7 @@ import {CarritoComponent} from './carrito/carrito.component';
 import {LoginComponent} from './login/login.component';
 import {RegistroComponent} from './registro/registro.component';
 import {VerPedidosComponent} from './ver-pedidos/ver-pedidos.component';
+import {FormularioFrutasVerdurasComponent} from './formulario-frutas-verduras/formulario-frutas-verduras.component';
 export const routes: Routes = [
 
 {path:"verdura", component:VerduraComponent},    
@@ -17,6 +18,7 @@ export const routes: Routes = [
 {path:"carrito", component:CarritoComponent},   
 {path:"login", component:LoginComponent},   
 {path:"registro", component:RegistroComponent},   
-{path:"ver-pedidos", component:VerPedidosComponent}   
+{path:"ver-pedidos", component:VerPedidosComponent},   
+{path:"aniadirFV", component: FormularioFrutasVerdurasComponent}   
 
 ];

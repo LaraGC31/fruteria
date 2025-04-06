@@ -1,36 +1,22 @@
 <div id="general">
-
-<form (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
-<p>
-<label for="nombre">Nombre:</label>
-    <input type="text" [(ngModel)]="nombre" name="nombre" id="nombre">
-</p>
-<p>
-    <label for="categoria">Categorias</label>
-    <select name="categorias" id="categoria" [(ngModel)]="idCategoria">
-        <option value="1">Fruta</option>
-        <option value="2">Verdura</option>
-    </select>
-</p>
-<p>
-    <label for="stock">¿Tienes stock?</label>
-    <select name="stock" id="stock" [(ngModel)]="stock">
-        <option value="0">No</option>
-        <option value="1">Si</option>
-    </select>
-</p>
-<p>
-    <label for="foto">Foto:</label>
-    <input type="file" [(ngModel)]="foto" (change)="onFileSelected($event)" id="foto" name="foto">
-</p>
-<p>
-    <label for="descripcion">Descripcion:</label>
-    <textarea name="descripcion" [(ngModel)]="descripcion" id="descripcion"></textarea>
-</p>
-<p>
-<label for="precio">Precio</label>
-    <input type="text" [(ngModel)]="precio" id="precio" name="precio">
-</p>
-<input type="submit" value="Añadir producto" id="btnAniadir">
-</form>
+<div id="coleccion">
+   
+    @for(data of data; track data.id){  
+        <div class="card">
+        <img [src]="'http://localhost/proyecto/back-end/assets/uploads/' + data.foto"alt="foto">
+        <h3>{{data.nombre.toUpperCase()}}</h3>
+        <p class="precio">{{data.precio}} €/kg</p>
+        <p class="descripcion">{{data.descripcion}}</p>
+        <button class="btn-carrito">Añadir al carrito</button>
+    </div>
+        }
+  
+</div>
+    @if(usuarioId != null && usuarioEmail != ""){
+        @if(usuarioRol == 'A'){
+    <div id="abajo">
+        <button id="aniadir" (click)="aniadirFV()">Añadir Frutas y Verduras</button>
+    </div>
+}
+    }
 </div>
