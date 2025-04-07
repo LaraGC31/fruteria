@@ -1,19 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataSignalService } from '../services/data-signal/data-signal.service';
 import { Router } from '@angular/router'; 
+import {ProductosService} from '../services/productos/productos.service';
+
 @Component({
   selector: 'app-inicio',
   imports: [],
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
-export class InicioComponent  {
-
+export class InicioComponent implements OnInit  {
+data:any = '';
 
   constructor(private router: Router,
-    private dataService: DataSignalService
-  ){
-
+    private dataService: DataSignalService,
+    private productosService: ProductosService
+  ){}
+  ngOnInit(){
+    this.getProductos();
+    
   }
   login(){
     this.router.navigate(['/login']); 
@@ -33,5 +38,11 @@ export class InicioComponent  {
   get usuarioRol():string {
     return this.dataService.getRol();
   }
+  getProductos(){
+    this.productosService.getProductos().subscribe((data)=>{
+      this.data = data
+    })
+  }
   
+
 }

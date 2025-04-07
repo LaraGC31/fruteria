@@ -30,4 +30,7 @@ export class ProductosService {
   getProductosByVerdura(){
     return this.http.get(`${environment.baseUrl}Productos/getProductosByVerdura`);
   }
+  getProductos(){
+    return this.http.get(`${environment.baseUrl}Productos/getProductos`);
+  }
 }

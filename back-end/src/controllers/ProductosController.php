@@ -55,4 +55,10 @@ class ProductosController{
         header('Content-Type: application/json');
         echo json_encode($productosModel->getProductosByVerdura());
     }
+    public function getProductos() {
+        $productosModel = new ProductosModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($productosModel->getProductos());
+    }
 }

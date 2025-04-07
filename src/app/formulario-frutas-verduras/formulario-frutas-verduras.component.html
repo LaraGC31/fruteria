@@ -1,7 +1,7 @@
 <div id="general">
 <form (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
 <div class="input-container">
-<label for="nombre">Nombre:</label>
+<label for="nombre">NOMBRE</label>
     <input type="text" [(ngModel)]="nombre" name="nombre" id="nombre">
    
 </div>
@@ -14,10 +14,10 @@
     }
 </div>
 <div class="input-container">
-    <label for="categoria">Categorias</label>
+    <label for="categoria">CATEGORIAS</label>
     <select name="categorias" id="categoria" [(ngModel)]="idCategoria">
         @for(data of data; track data.id){  
-            <option value="{{data.id}}">{{data.nombre}}</option>
+            <option value="{{data.id}}">{{data.nombre.toUpperCase()}}</option>
             }
     </select>
    
@@ -31,12 +31,13 @@
     }
 </div>
 <div class="input-container">
-    <label for="stock">¿Tienes stock?</label>
-    <select name="stock" id="stock" [(ngModel)]="stock">
-        <option value="0">No</option>
-        <option value="1">Si</option>
-    </select>
-   
+    <label for="stock">¿TIENE STOCK?</label>
+    <label>
+      <input type="radio" [(ngModel)]="stock" name="riesgo" id="riesgo1" value="1">
+      SI
+      <input type="radio" [(ngModel)]="stock" name="riesgo" id="riesgo2" value="0">
+      NO
+    </label>
 </div>
 <div id="formErrors">
     @if(botonAniadir){
@@ -47,7 +48,7 @@
     }
 </div>
 <div class="input-container">
-    <label for="foto">Foto:</label>
+    <label for="foto">FOTO</label>
     <input type="file" [(ngModel)]="foto" (change)="onFileSelected($event)" id="foto" name="foto">
     
 </div>
@@ -60,7 +61,7 @@
     }
 </div>
 <div class="input-container">
-    <label for="descripcion">Descripcion:</label>
+    <label for="descripcion">DESCRIPCION</label>
     <textarea name="descripcion" [(ngModel)]="descripcion" id="descripcion"></textarea>
     
 </div>
@@ -73,7 +74,7 @@
     }
 </div>
 <div class="input-container">
-<label for="precio">Precio</label>
+<label for="precio">PRECIO</label>
     <input type="text" [(ngModel)]="precio" id="precio" name="precio">
     
 </div>

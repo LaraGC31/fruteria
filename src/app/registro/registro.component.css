@@ -8,7 +8,7 @@
     margin-top: 5vh;
 }
 form {
-  background-color: #ffffff; /* Color blanco */
+  background-color: #ffffff;
   padding: 4vh 4vw;
   border-radius: 2vh;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
@@ -32,17 +32,15 @@ form .input-container label {
   color: #333;
 }
 
-form .input-container input,
-form .input-container select,
-form .input-container textarea {
+form .input-container input {
   font-size: 2vh;
   padding: 1.2vh;
 }
 
 input[type="text"],
-input[type="file"],
-textarea,
-select {
+input[type="email"],
+input[type="password"],
+input[type="tel"] {
   width: 100%;
   padding: 1.2vh;
   font-size: 2vh;
@@ -54,15 +52,12 @@ select {
 }
 
 input[type="text"]:focus,
-textarea:focus,
-select:focus {
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus {
   border-color: #3498db;
 }
 
-textarea {
-  resize: vertical;
-  min-height: 10vh;
-}
 
 input[type="submit"] {
   background-color: #27ae60;
@@ -84,17 +79,11 @@ select {
   background-color: #f9f9f9;
 }
 
-input[type="file"] {
-  padding: 0.5vh 1vw;
-  border: 1px solid #ccc;
-}
  
 #formErrors {
   min-height: 3.5vh; 
 
-  
 }
-
 #formErrors p {
   font-size: 2vh;
   background-color: red;

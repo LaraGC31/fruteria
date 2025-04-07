@@ -73,4 +73,20 @@ class ProductosModel extends Model{
 
         }
     }
+    public function getProductos(){
+        try {
+        
+            $consulta = "select * from productos";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+            $sentencia->execute();
+          
+            $resultado = $sentencia->fetchAll();
+            return $resultado;
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
 }

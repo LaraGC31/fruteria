@@ -13,7 +13,7 @@ import {CategoriaService} from '../services/categorias/categoria.service';
 })
 export class FormularioFrutasVerdurasComponent implements OnInit{
 nombre:string = '';
-stock:any = '';
+stock:any = '1';
 idCategoria:any = '';
 descripcion:string = '';
 precio:any = '';
