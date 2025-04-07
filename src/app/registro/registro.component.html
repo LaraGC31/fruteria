@@ -1,80 +1,94 @@
 <div id="general">
     <form (ngSubmit)="onSubmit()">
-        <p>
+        <div class="input-container">
             <label for="nombre">NOMBRE Y APELLIDOS</label>
             <input type="text" [(ngModel)]="nombre" id="nombre" name="nombre" >
-            @if(botonAniadir){
-                @if(dataRegistro.errores?.nombre || (nombre === "" || typeof nombre == 'undefined')){
-                <p id="errores">No se ha podido seleccionar</p>
-                }
-                }
-        </p>
-        
+           
+            </div>
+            <div id="formErrors">
+                @if(botonAniadir){
+                    @if(dataRegistro.errores?.nombre || (nombre === "" || typeof nombre == 'undefined')){
+                    <p id="errores">No se ha podido seleccionar</p>
+                    }
+                    }
+            </div>
 
-        <p>
+        <div class="input-container">
             <label for="email">EMAIL</label>
             <input type="text" [(ngModel)]="email" id="email" name="email" >
+           
+        </div>
+        <div id="formErrors">
             @if(botonAniadir){
                 @if(dataRegistro.errores?.email || (email === "" || typeof email == 'undefined')){
                 <p id="errores">No se ha podido seleccionar</p>
                 }
                 }
-        </p>
-        
-        <p>
+        </div>
+        <div class="input-container">
             <label for="password">CONTRASEÑA</label>
         
             <input type="password"  [(ngModel)]="password" id="password" name="password">
+           
+        </div>
+        <div id="formErrors">
             @if(botonAniadir){
                 @if(dataRegistro.errores?.password||(password === "" || typeof password == 'undefined')){
                 <p id="errores">No se ha podido seleccionar</p>
                 }
                 }
-        </p>
-       
-        <p>
+        </div>
+        <div class="input-container">
             <label for="telefono">TELEFONO</label>
         
             <input type="tel"[(ngModel)]="telefono" name="telefono" id="telefono" >
-            @if(botonAniadir){
-                @if(dataRegistro.errores?.telefono ||(telefono === "" || typeof telefono == 'undefined')){
-                <p id="errores">No se ha podido seleccionar</p>
-                }
-                }
-        </p>
-       
-        <p>
+            
+            </div>
+            <div id="formErrors">
+                @if(botonAniadir){
+                    @if(dataRegistro.errores?.telefono ||(telefono === "" || typeof telefono == 'undefined')){
+                    <p id="errores">No se ha podido seleccionar</p>
+                    }
+                    }
+            </div>
+        <div class="input-container">
             <label for="direccion">DIRECCION</label>
        
             <input type="text"  [(ngModel)]="direccion" id="direccion" name="direccion">
-            @if(botonAniadir){
-                @if(direccion === "" || typeof direccion == 'undefined'){
-                <p id="errores">No se ha podido seleccionar</p>
-                }
-                }
-        </p>
-      
-        <p>
+           
+            </div>
+            <div id="formErrors">
+                @if(botonAniadir){
+                    @if(direccion === "" || typeof direccion == 'undefined'){
+                    <p id="errores">No se ha podido seleccionar</p>
+                    }
+                    }
+            </div>
+        <div class="input-container">
             <label for="codPostal">CODIGO POSTAL</label>
         
             <input type="text" [(ngModel)]="codPostal" id="codPostal" name="codPostal" >
-            @if(botonAniadir){
-                @if(dataRegistro.errores?.codPostal ||(codPostal === "" || typeof codPostal == 'undefined')){
-                <p id="errores">No se ha podido seleccionar</p>
-                }
-                }
-        </p>
-        
-        <p>
+            
+            </div>
+            <div id="formErrors">
+                @if(botonAniadir){
+                    @if(dataRegistro.errores?.codPostal ||(codPostal === "" || typeof codPostal == 'undefined')){
+                    <p id="errores">No se ha podido seleccionar</p>
+                    }
+                    }
+            </div>
+        <div class="input-container">
             <label for="provincia">PROVINCIA</label>
             <input type="text" [(ngModel)]="provincia" id="provincia" name="provincia" >
+           
+        </div>
+        <div id="formErrors">
             @if(botonAniadir){
                 @if(provincia === "" || typeof provincia == 'undefined'){
                 <p id="errores">No se ha podido seleccionar</p>
                 }
                 }
-        </p>
-       
+        </div>
         <input type="submit" id="botonAniadir" value="Iniciar Sesión" >
         
     </form>

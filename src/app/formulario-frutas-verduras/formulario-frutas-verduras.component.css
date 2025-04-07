@@ -6,7 +6,19 @@
     width: 100%;
     background-color: #f5fff5;
 }
-
+form {
+  background-color: #ffffff; /* Color blanco */
+  padding: 4vh 4vw;
+  border-radius: 2vh;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+form:hover {
+  transform: scale(1.01);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
 form .input-container {
   display: flex;
   flex-direction: column;
@@ -76,8 +88,8 @@ input[type="file"] {
 }
  
 #formErrors {
-  margin-top: 0.5vh; 
-  display: block;
+  min-height: 3.5vh; 
+
   
 }
 

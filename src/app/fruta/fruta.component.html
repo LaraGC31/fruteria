@@ -7,7 +7,9 @@
         <h3>{{data.nombre.toUpperCase()}}</h3>
         <p class="precio">{{data.precio}} €/kg</p>
         <p class="descripcion">{{data.descripcion}}</p>
+        @if(usuarioId != null && usuarioEmail != ""){
         <button class="btn-carrito">Añadir al carrito</button>
+        }
     </div>
         }
   
