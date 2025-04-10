@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router'; 
 import { DataSignalService } from './services/data-signal/data-signal.service';
@@ -16,14 +16,25 @@ export class AppComponent implements OnInit {
   title = 'fruteria';
   usuario: any = {id: null, nombre: "", email: "", rol: ""};
 
+  
+  mostrarSidebar: boolean = true;
+  mostrarSidebarD: boolean = true;
+  public getScreenWidth: any;
+  public getScreenHeight: any;
+
   constructor(private dataService: DataSignalService,
     private router: Router,
     private location: Location){}
 
   ngOnInit(){
-   
+    this.mostrarSidebar = true;
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+    this.location.subscribe((data) => {
+      this.router.navigateByUrl('/');
+      this.mostrarSidebar = true;
+    });
  this.cargarUsuario();
-  
   }
   get usuarioEmail(): string{
     return this.dataService.getEmail();
@@ -67,7 +78,23 @@ export class AppComponent implements OnInit {
     
     this.sendUsuario();
   }
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.getScreenWidth = window.innerWidth;
+    this.getScreenHeight = window.innerHeight;
+  }
+  ocultarMostrarSidebar() {
+    this.mostrarSidebarD = !this.mostrarSidebarD;
+  }
 
+  ocultarSidebar() {
+    this.mostrarSidebar = false;
+  }
+
+
+  volver() {
+    this.mostrarSidebar = true;
+  }
   sendUsuario(): void {
     this.dataService.setId(this.usuario.id);
     this.dataService.setEmail(this.usuario.email);

@@ -1,0 +1,93 @@
+<div id="general">
+    <form (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
+    <div class="input-container">
+    <label for="nombre">NOMBRE</label>
+        <input type="text" [(ngModel)]="nombre" name="nombre" id="nombre">
+       
+    </div>
+    <div id="formErrors">
+        @if(botonAniadir){
+            @if(nombre === "" || typeof nombre == 'undefined'){
+                <p id="error">No se ha podido seleccionar</p>
+    
+            }
+        }
+    </div>
+    <div class="input-container">
+        <label for="categoria">CATEGORIAS</label>
+        <select name="categorias" id="categoria" [(ngModel)]="idCategoria">
+            @for(data of data; track data.id){  
+                <option value="{{data.id}}">{{data.nombre.toUpperCase()}}</option>
+                }
+        </select>
+       
+    </div>
+    <div id="formErrors">
+        @if(botonAniadir){
+            @if(idCategoria === "" || typeof idCategoria == 'undefined'){
+                <p id="error">No se ha podido seleccionar</p>
+    
+            }
+        }
+    </div>
+    <div class="input-container">
+        <label for="stock">¿TIENE STOCK?</label>
+        <label>
+          <input type="radio" [(ngModel)]="stock" name="riesgo" id="riesgo1" value="1">
+          SI
+          <input type="radio" [(ngModel)]="stock" name="riesgo" id="riesgo2" value="0">
+          NO
+        </label>
+    </div>
+    <div id="formErrors">
+        @if(botonAniadir){
+            @if(stock === "" || typeof stock == 'undefined'){
+                <p id="error">No se ha podido seleccionar</p>
+    
+            }
+        }
+    </div>
+    <div class="input-container">
+        <label for="foto">FOTO</label>
+        <input type="file" [(ngModel)]="foto" (change)="onFileSelected($event)" id="foto" name="foto">
+        
+    </div>
+    <div id="formErrors">
+        @if(botonAniadir){
+            @if(foto === "" || typeof foto == 'undefined'){
+                <p id="error">No se ha podido seleccionar</p>
+    
+            }
+        }
+    </div>
+    <div class="input-container">
+        <label for="descripcion">DESCRIPCION</label>
+        <textarea name="descripcion" [(ngModel)]="descripcion" id="descripcion"></textarea>
+        
+    </div>
+    <div id="formErrors">
+        @if(botonAniadir){
+            @if(descripcion === "" || typeof descripcion == 'undefined'){
+                <p id="error">No se ha podido seleccionar</p>
+    
+            }
+        }
+    </div>
+    <div class="input-container">
+    <label for="precio">PRECIO</label>
+        <input type="text" [(ngModel)]="precio" id="precio" name="precio">
+        
+    </div>
+    <div id="formErrors">
+        @if(botonAniadir){
+            @if(precio === "" || typeof precio == 'undefined'){
+                <p id="error">No se ha podido seleccionar</p>
+    
+            }
+        }
+    </div>
+    <input type="submit" value="Añadir producto" id="btnAniadir" >
+    </form>
+    
+    </div>
+    

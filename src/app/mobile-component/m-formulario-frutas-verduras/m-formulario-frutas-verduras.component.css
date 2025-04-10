@@ -1,0 +1,104 @@
+#general{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f5fff5;
+}
+form {
+  background-color: #ffffff; /* Color blanco */
+  padding: 4vh 4vw;
+  border-radius: 2vh;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+form:hover {
+  transform: scale(1.01);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+form .input-container {
+  display: flex;
+  flex-direction: column;
+}
+
+form .input-container label {
+  font-size: 2.5vh;
+  font-weight: bold;
+  color: #333;
+}
+
+form .input-container input,
+form .input-container select,
+form .input-container textarea {
+  font-size: 2vh;
+  padding: 1.2vh;
+}
+
+input[type="text"],
+input[type="file"],
+textarea,
+select {
+  width: 100%;
+  padding: 1.2vh;
+  font-size: 2vh;
+  border: 1px solid #ccc;
+  border-radius: 1vh;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+  border-color: #3498db;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 10vh;
+}
+
+input[type="submit"] {
+  background-color: #27ae60;
+  color: #fff;
+  border: none;
+  padding: 1.5vh 2vw;
+  font-size: 2.5vh;
+  border-radius: 2vh;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2vh;
+}
+
+input[type="submit"]:hover {
+  background-color: #219150;
+}
+
+select {
+  background-color: #f9f9f9;
+}
+
+input[type="file"] {
+  padding: 0.5vh 1vw;
+  border: 1px solid #ccc;
+}
+ 
+#formErrors {
+  min-height: 3.5vh; 
+
+  
+}
+
+#formErrors p {
+  font-size: 2vh;
+  background-color: red;
+  color: white;
+  border-radius: 1vh;
+  text-align: center;
+  height: 3vh;
+
+}

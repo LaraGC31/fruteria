@@ -1,4 +1,67 @@
+@if(getScreenWidth <= 576 && getScreenHeight <=1080){ 
+  <div id="generalM">
+    @if (mostrarSidebar == true) { 
+    <nav class="navbarM">
+    <ul class="nav-linksM">
+      <li>
+        <a href="#" routerLink="/m-inicio">Inicio</a>
+      </li>
+      <li>
+        <a href="#" routerLink="/m-fruta">Fruta</a>
+      </li>
+      <li>
+        <a href="#" routerLink="/m-verdura">Verdura</a>
+      </li>
+    </ul>
+    <ul class="nav-iconsM">
+      @if(usuarioRol != 'A'){
+      <li >
+        <a href="#" routerLink="/m-carrito"><img src="../assets/carrito.png" alt="lo"></a>
+      </li>
+    }
+      @if(usuarioId != null && usuarioEmail != ""){
+        @if(usuarioRol == 'A'){
+         
+          <li id="colocarM">
+            <a href="#" routerLink="/m-ver-pedidos">Ver pedidos</a>
+          </li>
+            <li>
+            <p id="usuarioNombre">{{usuarioNombre}}</p>
+            <button id="cerrar" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </li>
+        }@else {
+          <li>
+            <p id="usuarioNombre">{{usuarioNombre}}</p>
+            <button id="cerrar" (click)="cerrarSesion()">Cerrar Sesión</button>
+          </li>
+        }
+      
+    }@else {
+      <li>
+        <button (click)="login()">Login In</button>
+     
+      </li>
+     <li>
+      <button (click)="registro()">Registro</button>
+     </li> 
+    }
+    </ul>
+  </nav>
+    }@else{
+      <div id="contenedorVista">
+        <div id="volver">
+            <button id="btn-volver" (click)="volver()">VOLVER</button>
+        </div>
+        <router-outlet id="vista-componente"></router-outlet>
+    </div>
+
+    }
+  </div>
+
+    
+}@else{
 <div id="general">
+  @if (mostrarSidebarD) { 
     <nav class="navbar">
     <ul class="nav-links">
       <li>
@@ -43,9 +106,10 @@
     }
     </ul>
   </nav>
+}@else{
 
       <router-outlet></router-outlet>
-
-
+}
   </div>
 
+}

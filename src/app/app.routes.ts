@@ -8,6 +8,14 @@ import {LoginComponent} from './login/login.component';
 import {RegistroComponent} from './registro/registro.component';
 import {VerPedidosComponent} from './ver-pedidos/ver-pedidos.component';
 import {FormularioFrutasVerdurasComponent} from './formulario-frutas-verduras/formulario-frutas-verduras.component';
+import { MFormularioFrutasVerdurasComponent } from './mobile-component/m-formulario-frutas-verduras/m-formulario-frutas-verduras.component';
+import { MFrutaComponent } from './mobile-component/m-fruta/m-fruta.component';
+import { MInicioComponent } from './mobile-component/m-inicio/m-inicio.component';
+import { MCarritoComponent } from './mobile-component/m-carrito/m-carrito.component';
+import { MLoginComponent } from './mobile-component/m-login/m-login.component';
+import { MRegistroComponent } from './mobile-component/m-registro/m-registro.component';
+import { MVerPedidosComponent } from './mobile-component/m-ver-pedidos/m-ver-pedidos.component';
+
 export const routes: Routes = [
 
 {path:"verdura", component:VerduraComponent},    
@@ -19,6 +27,16 @@ export const routes: Routes = [
 {path:"login", component:LoginComponent},   
 {path:"registro", component:RegistroComponent},   
 {path:"ver-pedidos", component:VerPedidosComponent},   
-{path:"aniadirFV", component: FormularioFrutasVerdurasComponent}   
+{path:"aniadirFV", component: FormularioFrutasVerdurasComponent},   
+
+
+{path:"m-verdura", component:MFormularioFrutasVerdurasComponent},    
+{path:"m-fruta", component:MFrutaComponent},   
+{path:"m-inicio", component:MInicioComponent},    
+{path:"m-carrito", component:MCarritoComponent},   
+{path:"m-login", component:MLoginComponent},   
+{path:"m-registro", component:MRegistroComponent},   
+{path:"m-ver-pedidos", component:MVerPedidosComponent},   
+{path:"m-aniadirFV", component: MFormularioFrutasVerdurasComponent}   
 
 ];
