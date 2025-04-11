@@ -4,26 +4,26 @@
     <nav class="navbarM">
     <ul class="nav-linksM">
       <li>
-        <a href="#" routerLink="/m-inicio">Inicio</a>
+        <a href="#" routerLink="/m-inicio" (click)="ocultarSidebar()">Inicio</a>
       </li>
       <li>
-        <a href="#" routerLink="/m-fruta">Fruta</a>
+        <a href="#" routerLink="/m-fruta" (click)="ocultarSidebar()">Fruta</a>
       </li>
       <li>
-        <a href="#" routerLink="/m-verdura">Verdura</a>
+        <a href="#" routerLink="/m-verdura" (click)="ocultarSidebar()">Verdura</a>
       </li>
     </ul>
     <ul class="nav-iconsM">
       @if(usuarioRol != 'A'){
       <li >
-        <a href="#" routerLink="/m-carrito"><img src="../assets/carrito.png" alt="lo"></a>
+        <a href="#" routerLink="/m-carrito" (click)="ocultarSidebar()"><img src="../assets/carrito.png" alt="lo"></a>
       </li>
     }
       @if(usuarioId != null && usuarioEmail != ""){
         @if(usuarioRol == 'A'){
          
           <li id="colocarM">
-            <a href="#" routerLink="/m-ver-pedidos">Ver pedidos</a>
+            <a href="#" routerLink="/m-ver-pedidos" (click)="ocultarSidebar()">Ver pedidos</a>
           </li>
             <li>
             <p id="usuarioNombre">{{usuarioNombre}}</p>
@@ -38,11 +38,11 @@
       
     }@else {
       <li>
-        <button (click)="login()">Login In</button>
+        <button (click)="login()" (click)="ocultarSidebar()">Login In</button>
      
       </li>
      <li>
-      <button (click)="registro()">Registro</button>
+      <button (click)="registro()" (click)="ocultarSidebar()">Registro</button>
      </li> 
     }
     </ul>
@@ -61,7 +61,6 @@
     
 }@else{
 <div id="general">
-  @if (mostrarSidebarD) { 
     <nav class="navbar">
     <ul class="nav-links">
       <li>
@@ -106,10 +105,9 @@
     }
     </ul>
   </nav>
-}@else{
 
       <router-outlet></router-outlet>
-}
+
   </div>
 
 }

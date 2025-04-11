@@ -15,6 +15,7 @@ import { MCarritoComponent } from './mobile-component/m-carrito/m-carrito.compon
 import { MLoginComponent } from './mobile-component/m-login/m-login.component';
 import { MRegistroComponent } from './mobile-component/m-registro/m-registro.component';
 import { MVerPedidosComponent } from './mobile-component/m-ver-pedidos/m-ver-pedidos.component';
+import { MVerduraComponent } from './mobile-component/m-verdura/m-verdura.component';
 
 export const routes: Routes = [
 
@@ -30,7 +31,7 @@ export const routes: Routes = [
 {path:"aniadirFV", component: FormularioFrutasVerdurasComponent},   
 
 
-{path:"m-verdura", component:MFormularioFrutasVerdurasComponent},    
+{path:"m-verdura", component:MVerduraComponent},    
 {path:"m-fruta", component:MFrutaComponent},   
 {path:"m-inicio", component:MInicioComponent},    
 {path:"m-carrito", component:MCarritoComponent},   
