@@ -1,3 +1,3 @@
 export const environment = {
-    baseUrl: "http://localhost/proyecto/back-end/"
+    baseUrl: "http://localhost/fruteria/back-end/"
 }

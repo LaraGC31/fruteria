@@ -7,7 +7,7 @@ class Parameters{
     public static $ACTION_DEFAULT = "";
 
     
-    public static $BASE_URL = "http://localhost/Proyecto/Back-end/";
+    public static $BASE_URL = "http://localhost/fruteria/Back-end/";
     public static $PAGINATION_RECORD_ALUMNOS = 3;
 
 
