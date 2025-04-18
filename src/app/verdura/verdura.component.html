@@ -7,7 +7,9 @@
                 <p class="precio">{{data.precio}} €/kg</p>
                 <p class="descripcion">{{data.descripcion}}</p>
                 @if(usuarioId != null && usuarioEmail != ""){
-                <button class="btn-carrito">Añadir al carrito</button>
+                    @if(usuarioRol != 'A'){
+                        <button class="btn-carrito" (click)="aniadirCarrito(usuarioId,data.id,data.precio)">Añadir al carrito</button>
+                    }
                 }
             </div>
             }

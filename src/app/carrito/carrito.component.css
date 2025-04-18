@@ -1,0 +1,85 @@
+#carrito-container {
+    max-width: 90vh;
+    margin: auto;
+    padding: 2.5vh;
+    border: 0.25vh solid #ccc;
+    border-radius: 1.5vh;
+    background-color: #fafafa;
+    box-shadow: 0 0.5vh  1.25vh rgba(0,0,0,0.1);
+    font-family: sans-serif;
+}
+
+#carrito-lista {
+    margin-bottom: 15vh;
+}
+
+.producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.25vh solid #ddd;
+    padding: 1.25vh 0;
+}
+
+.info-producto {
+    max-width: 70%;
+}
+
+.precio, .cantidad, .subtotal {
+    margin: 2vh;
+    font-size: 2.30vh;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.50vh 1vh;
+    border: none;
+    border-radius: 5vh;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#carrito-footer {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 0.5rem ;    
+}
+#carrito-footer .subtotall {
+font-weight: bold;
+text-align: center;   
+}
+.control-cantidad {
+    display: flex;
+    align-items: center;
+    margin: 1vh 0;
+}
+
+.control-cantidad input {
+    width: 10vh;
+    text-align: center;
+    margin: 0 1vh;
+    padding: 1vh;
+    border: 0.25vh solid #ccc;
+    border-radius: 1vh;
+}
+
+.control-cantidad button {
+    background-color: #eee;
+    color: #333;
+    font-size: 2vh;
+    width: 5vh;
+    height: 5vh;
+    border: none;
+    border-radius: 0.25vh;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-cantidad button:hover {
+    background-color: #ddd;
+}
