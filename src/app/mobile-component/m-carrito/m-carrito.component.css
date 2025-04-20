@@ -1,0 +1,74 @@
+
+
+#carrito-lista {
+    margin-bottom: 15vh;
+}
+
+.producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    padding: 1vh 0;
+}
+
+.info-producto {
+    max-width: 70%;
+}
+
+.precio, .cantidad, .subtotal {
+    margin: 2vh;
+    font-size: 1.5vh;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0.50vh 1vh;
+    border: none;
+    border-radius: 5vh;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#carrito-footer {
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+#carrito-footer .subtotall {
+font-weight: bold;
+text-align: center;   
+}
+.control-cantidad {
+    display: flex;
+    align-items: center;
+}
+
+.control-cantidad input {
+    width: 10vh;
+    text-align: center;
+    margin: 0 1vh;
+    padding: 1vh;
+    border: 0.25vh solid #ccc;
+    border-radius: 1vh;
+}
+
+.control-cantidad button {
+    background-color: #eee;
+    color: #333;
+    font-size: 1vh;
+    width: 3vh;
+    height: 3vh;
+    border: none;
+    border-radius: 0.25vh;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.control-cantidad button:hover {
+    background-color: #ddd;
+}

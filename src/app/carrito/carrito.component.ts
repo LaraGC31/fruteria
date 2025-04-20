@@ -63,15 +63,16 @@ export class CarritoComponent implements OnInit {
         formData
       )
       .subscribe((data) => {
-        const idPedido = data.id;
+        const idPedido = data.idPedido;
   for(let producto of this.data){
     const formData = new FormData();
     
     formData.append('idPedido',idPedido);
-    formData.append('idProducto', producto.idProducto);
+    formData.append('idProducto', producto.id);
     formData.append('cantidad', producto.cantidad);
     formData.append('precio', producto.precio);
 
+    
      
     
     this.http
@@ -79,14 +80,7 @@ export class CarritoComponent implements OnInit {
         `${environment.baseUrl}Pedidos/aniadirDetallePedido`,
         formData
       )
-      .subscribe(
-        (response) => {
-          console.log('Detalle pedido añadido:', response);
-        },
-        (error) => {
-          console.error('Error al insertar detalle de pedido:', error);
-        }
-  );
+      .subscribe((data)=>{});
 
 }
 this.CarritoService.getBorrarProductosCarritoTodos(this.usuarioId).subscribe((data)=>{

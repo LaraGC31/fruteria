@@ -5,6 +5,7 @@ import {environment} from '../../../environments/environment';
 import { DataSignalService } from '../../services/data-signal/data-signal.service';
 import {ProductosService} from '../../services/productos/productos.service';
 import { Router } from '@angular/router'; 
+import {CarritoService} from '../../services/carrito/carrito.service';
 
 
 @Component({
@@ -14,9 +15,9 @@ import { Router } from '@angular/router';
   styleUrl: './m-fruta.component.css'
 })
 export class MFrutaComponent implements OnInit {
-data:any = '';
+  data:any = '';
   constructor(private http: HttpClient, private dataService: DataSignalService, 
-    private router: Router, private productosService: ProductosService
+    private router: Router, private productosService: ProductosService, private CarritoService: CarritoService
 
   ){}
 
@@ -46,5 +47,31 @@ data:any = '';
     this.productosService.getProductosByFruta().subscribe((data)=>{
       this.data = data
     })
+  }
+  aniadirCarrito(idUsuario:any,idProducto:any,precio:any){
+    this.CarritoService.getProductosCarritoByUsuario(this.usuarioId).subscribe((productosEnCarrito: any[]) => {
+      const yaExiste = productosEnCarrito.some(p => p.id === idProducto);
+      
+      if (yaExiste) {
+        alert('Este producto ya está en el carrito');
+        return;
+      }
+ 
+    const formData = new FormData();
+
+    formData.append('idUsuario', idUsuario);
+    formData.append('idProducto',idProducto);
+    formData.append('precio', precio);
+    
+
+    this.http
+      .post(
+        `${environment.baseUrl}Carrito/aniadirCarrito`,
+        formData
+      )
+      .subscribe((data) => {
+
+  });
+})
   }
 }

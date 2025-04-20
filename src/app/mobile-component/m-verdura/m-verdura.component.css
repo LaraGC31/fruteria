@@ -18,7 +18,7 @@ background-color: #f5fff5;
 }
 .card{
     background-color: linear-gradient(135deg,#e0ffe0,#d0f0ff);
-    width: 22vw;
+    width: 55vw;
   min-height: 55vh;
   padding: 1vh;
   border-radius: 1.5vh;
@@ -36,8 +36,8 @@ background-color: #f5fff5;
   }
   
   .card img {
-    width: 12vw;
-    height: 12vw;
+    width: 20vw;
+    height: 20vw;
     object-fit: cover;
     border-radius: 1.2vh;
     margin: 0 auto;

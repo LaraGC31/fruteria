@@ -21,8 +21,8 @@ class PedidosModel extends Model{
      $sentencia->bindParam(':estado', $estado);
      $sentencia->bindParam(':totalPrecio', $totalPrecio);
 
-       return $sentencia->execute();
-     
+     $sentencia->execute();
+     return $this->conn->lastInsertId();
  } catch (\PDOException $e) {
      echo '<p> Excepcion' . $e->getMessage() . '</p>';
      echo "<p>" .var_dump($atributos) . "</p>";

@@ -1,1 +1,30 @@
-<p>m-carrito works!</p>
+<div id="carrito-container">
+    @if(data.length > 0){
+    <div id="carrito-lista">
+        @for(data of data; track data.id){  
+            <div class="producto">
+                <div class="info producto">
+            <h3>{{data.nombre.toUpperCase()}}</h3>
+            <p class="precio">{{data.precio}} €/kg</p>
+            <div class="control-cantidad">
+                <button (click)="restar(data)">-</button>
+                <input type="text" [(ngModel)]="data.cantidad" min="1">
+                <button (click)="sumar(data)">+</button>
+              </div>
+              
+        </div>
+        <button (click)="eliminarProducto(data.id)">Eliminar</button>
+    </div>
+            }
+    </div>
+    <div id="carrito-footer">
+        <h4 class="subtotall">{{subtotal}} €</h4>
+        <button (click)="tramitarPedido(subtotal,usuarioId)">Tramitar pedido</button>
+    </div>
+
+    }@else{
+        <h3>No hay ningun producto en tu cesta</h3>
+    }
+</div>
+    
+

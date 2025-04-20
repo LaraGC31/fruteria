@@ -15,7 +15,8 @@ class PedidosController{
 
         $dataRegistros = [
             "status" => false,
-            "errores" => []
+            "errores" => [],
+            "idPedido" => null
         ];
         
         if(empty($dataRegistros["errores"])){
@@ -27,8 +28,15 @@ class PedidosController{
             );
 
             $pedidoModel = new PedidosModel();
-            $pedidoModel->aniadirPedidos($atributos);
+           $idPedido  =  $pedidoModel->aniadirPedidos($atributos);
+ 
+           if($idPedido !== null){
             $dataRegistros["status"] = true;
+            $dataRegistros["idPedido"] = $idPedido;
+           }else{
+            $dataRegistros["errores"][] = "No se pudo insertar el pedido";
+           }
+
         }
         header('Content-Type: application/json');
         echo json_encode($dataRegistros);
