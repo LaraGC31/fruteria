@@ -16,6 +16,7 @@ import {PedidosService} from '../services/pedidos/pedidos.service';
 export class CarritoComponent implements OnInit {
 
   data: any[] = [];
+  datos:any = "";
   constructor(private http: HttpClient, private dataService: DataSignalService, private CarritoService: CarritoService, private PedidosService:PedidosService
   ){}
 
@@ -50,13 +51,29 @@ export class CarritoComponent implements OnInit {
 
     })
   }
+ 
   tramitarPedido(subtotal:any, idUsuario:any){
        const formData = new FormData();
-    
+       formData.append('idUsuario', idUsuario);
 
-    formData.append('idUsuario', idUsuario);
-    formData.append('totalPrecio', subtotal);
+       this.PedidosService.getOnePedidos(idUsuario).subscribe((datos) => {
+        let esPrimerPedido = false;
+
+    // Detecta si es el primer pedido de forma más robusta
+    if (datos == 0 || datos == null || (typeof datos === 'object' && Object.keys(datos).length === 0) || datos == "") {
+      esPrimerPedido = true;
+    }
+
+        let totalFinal = subtotal;
     
+        if (!esPrimerPedido && subtotal < 20) {
+          totalFinal += 2;
+        }
+    
+        formData.append('totalPrecio', totalFinal);
+    
+  
+
     this.http
       .post<any>(
         `${environment.baseUrl}Pedidos/aniadirPedido`,
@@ -88,6 +105,7 @@ this.CarritoService.getBorrarProductosCarritoTodos(this.usuarioId).subscribe((da
   alert("Pedido tramitado con exito");
 });
 });
+       });
   }
  
   sumar(item: any) {

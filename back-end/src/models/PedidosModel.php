@@ -3,6 +3,28 @@ namespace Larit\Proyecto\Models;
 use Larit\Proyecto\Models\Model;
 
 class PedidosModel extends Model{
+    public function __construct(){
+        parent::__construct();
+        $this->tabla = "pedidos";
+    }
+    public function getOnePedidos($id){
+        try {
+        
+            $consulta = "select * from pedidos where idUsuario = :id";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':id', $id);
+          //  $sentencia->setFetchMode(\PDO::FETCH_ASSOC);
+            $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+            $sentencia->execute();
+          
+            $resultado = $sentencia->fetch();
+            return $resultado;
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
     public function aniadirPedidos($atributos){
         $idUsuario = $atributos[0];
  $fecha = $atributos[1];

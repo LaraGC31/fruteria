@@ -28,6 +28,10 @@ export class PedidosService {
       `${environment.baseUrl}Pedidos/aniadirDetallePedido?idProducto=${idProducto}&precio=${precio}&cantidad=${cantidad}`
     );
   }
- 
+  getOnePedidos(idUsuario:string){
+    return this.http.get(
+      `${environment.baseUrl}Pedidos/getOnePedidos?idUsuario=${idUsuario}`
+    );
+  }
   
 }

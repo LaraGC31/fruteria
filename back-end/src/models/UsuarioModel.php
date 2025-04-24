@@ -4,7 +4,11 @@ use Larit\Proyecto\Models\Model;
 
 
 class UsuarioModel extends Model{
-
+    public function __construct(){
+        parent::__construct();
+        $this->tabla = "usuarios";
+    }
+    
     public function login($email){
         try{
             $consulta ="select * from usuarios where email = :email";
@@ -17,6 +21,7 @@ class UsuarioModel extends Model{
             return NULL;
         }
     }
+    
 
     public function aniadirUsuario($atributos){
         $nombre = $atributos[0];

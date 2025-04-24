@@ -69,7 +69,12 @@ class PedidosController{
         echo json_encode($dataRegistros); 
     }
     
-
+public function getOnePedidos(){
+    $idUsuario = $_POST["idUsuario"]??"";
+    $pedidoModel = new PedidosModel();
+    header('Content-Type: application/json');
+    echo json_encode($pedidoModel->getOnePedidos($idUsuario)); 
+}
 
 
 
