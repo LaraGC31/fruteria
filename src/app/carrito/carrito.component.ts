@@ -16,7 +16,7 @@ import {PedidosService} from '../services/pedidos/pedidos.service';
 export class CarritoComponent implements OnInit {
 
   data: any[] = [];
-  datos:any = "";
+  datos:any;
   constructor(private http: HttpClient, private dataService: DataSignalService, private CarritoService: CarritoService, private PedidosService:PedidosService
   ){}
 
@@ -57,16 +57,14 @@ export class CarritoComponent implements OnInit {
        formData.append('idUsuario', idUsuario);
 
        this.PedidosService.getOnePedidos(idUsuario).subscribe((datos) => {
-        let esPrimerPedido = false;
-
-    // Detecta si es el primer pedido de forma más robusta
-    if (datos == 0 || datos == null || (typeof datos === 'object' && Object.keys(datos).length === 0) || datos == "") {
-      esPrimerPedido = true;
-    }
-
+        this.datos = datos;
+        console.log(datos);
+        
+      
         let totalFinal = subtotal;
     
-        if (!esPrimerPedido && subtotal < 20) {
+        if ((datos != 0) && totalFinal < 20) {
+          alert("Tienes que pagar 2€ por los gastos de envio, el pedido no llega a 20€");
           totalFinal += 2;
         }
     

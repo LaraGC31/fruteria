@@ -68,6 +68,7 @@ export class VerduraComponent  implements OnInit {
         formData
       )
       .subscribe((data) => {
+        alert("Pedido añadido al carrito");
 
   });
 });

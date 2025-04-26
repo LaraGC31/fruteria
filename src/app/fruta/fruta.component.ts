@@ -69,7 +69,7 @@ data:any = '';
         formData
       )
       .subscribe((data) => {
-
+       alert("Pedido añadido al carrito");
   });
 })
   }

@@ -10,15 +10,15 @@ class PedidosModel extends Model{
     public function getOnePedidos($id){
         try {
         
-            $consulta = "select * from pedidos where idUsuario = :id";
+            $consulta = "select count(*) as contador  from pedidos where idUsuario = :id";
             $sentencia = $this->conn->prepare($consulta);
             $sentencia->bindParam(':id', $id);
-          //  $sentencia->setFetchMode(\PDO::FETCH_ASSOC);
+         // $sentencia->setFetchMode(\PDO::FETCH_ASSOC);
             $sentencia->setFetchMode(\PDO::FETCH_OBJ);
             $sentencia->execute();
           
             $resultado = $sentencia->fetch();
-            return $resultado;
+           return $resultado->contador;
         } catch (\PDOException $e) {
             echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
             return NULL;
@@ -77,23 +77,5 @@ try {
  return NULL;
 }  
 } 
-public function getObtenerIdDelPedido($idUsuario){
-    try {
-    
-        $consulta = "SELECT id 
-             FROM pedidos 
-             WHERE idUsuario = :idUsuario 
-             ORDER BY fecha DESC 
-             LIMIT 1";
-        $sentencia = $this->conn->prepare($consulta);
-        $sentencia->bindParam(':idUsuario', $idUsuario);
 
-        $sentencia->execute();
-        return   $sentencia->fetchAll(\PDO::FETCH_OBJ);
-    } catch (\PDOException $e) {
-        echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
-        return NULL;
-
-    }
-}
 }
