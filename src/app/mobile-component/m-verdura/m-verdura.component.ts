@@ -66,6 +66,7 @@ export class MVerduraComponent  implements OnInit{
         formData
       )
       .subscribe((data) => {
+        alert("Pedido añadido al carrito");
 
   });
 });

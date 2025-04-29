@@ -16,6 +16,7 @@ email:string = '';
 password:string = '';
 nombre:string ='';
 rol:string ='';
+errores:string = '';
 usuario:any = {};
  
 @Output() enviarUsuario = new EventEmitter<any>();
@@ -42,12 +43,16 @@ ngOnInit(): void {
 
 onSubmit(): void {
   this.usuarioService.login(this.email, this.password).subscribe((data) => {
+    if(data && data.id){
     this.enviarUsuario.emit(data);
     this.id = data.id;
     this.nombre = data.nombre;
     this.rol = data.rol;
     this.guardarUsuario(data);
-
+    this.router.navigate(['/inicio']); 
+    }else{
+    this.errores = "Email o contraseña incorrectos";
+    }
   });
 }
 
@@ -63,7 +68,6 @@ guardarUsuario(usuario: any) {
   this.dataSignalService.setEmail(this.email);
   this.dataSignalService.setNombre(this.nombre);
   this.dataSignalService.setRol(this.rol);
-  this.router.navigate(['/inicio']); 
 
 }
 }

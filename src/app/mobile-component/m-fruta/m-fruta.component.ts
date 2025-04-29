@@ -70,6 +70,7 @@ export class MFrutaComponent implements OnInit {
         formData
       )
       .subscribe((data) => {
+        alert("Pedido añadido al carrito");
 
   });
 })

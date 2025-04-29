@@ -70,3 +70,11 @@ input[type="submit"]:hover {
   background-color: #219150;
 }
 
+.errores{
+  font-size: 2vh;
+  background-color: red;
+  color: white;
+  border-radius: 1vh;
+  text-align: center;
+  height: 3vh;
+}

@@ -16,6 +16,7 @@ templateUrl: './m-carrito.component.html',
 export class  MCarritoComponent implements OnInit {
 
   data: any[] = [];
+  datos:any;
   constructor(private http: HttpClient, private dataService: DataSignalService, private CarritoService: CarritoService, private PedidosService:PedidosService
   ){}
 
@@ -51,45 +52,59 @@ export class  MCarritoComponent implements OnInit {
     })
   }
   tramitarPedido(subtotal:any, idUsuario:any){
-       const formData = new FormData();
-    
-
-    formData.append('idUsuario', idUsuario);
-    formData.append('totalPrecio', subtotal);
-    
-    this.http
-      .post<any>(
-        `${environment.baseUrl}Pedidos/aniadirPedido`,
-        formData
-      )
-      .subscribe((data) => {
-        const idPedido = data.idPedido;
-  for(let producto of this.data){
     const formData = new FormData();
-    
-    formData.append('idPedido',idPedido);
-    formData.append('idProducto', producto.id);
-    formData.append('cantidad', producto.cantidad);
-    formData.append('precio', producto.precio);
+    formData.append('idUsuario', idUsuario);
 
-    
+    this.PedidosService.getOnePedidos(idUsuario).subscribe((datos) => {
+     this.datos = datos;
+     console.log(datos);
      
-    
-    this.http
-      .post<any>(
-        `${environment.baseUrl}Pedidos/aniadirDetallePedido`,
-        formData
-      )
-      .subscribe((data)=>{});
+   
+     let totalFinal = subtotal;
+ 
+     if ((datos != 0) && totalFinal < 20) {
+       alert("Tienes que pagar 2€ por los gastos de envio, el pedido no llega a 20€");
+       totalFinal += 2;
+     }
+ 
+     formData.append('totalPrecio', totalFinal);
+ 
 
+
+ this.http
+   .post<any>(
+     `${environment.baseUrl}Pedidos/aniadirPedido`,
+     formData
+   )
+   .subscribe((data) => {
+     const idPedido = data.idPedido;
+for(let producto of this.data){
+ const formData = new FormData();
+ 
+ formData.append('idPedido',idPedido);
+ formData.append('idProducto', producto.id);
+ formData.append('cantidad', producto.cantidad);
+ formData.append('precio', producto.precio);
+
+ 
+  
+ 
+ this.http
+   .post<any>(
+     `${environment.baseUrl}Pedidos/aniadirDetallePedido`,
+     formData
+   )
+   .subscribe((data)=>{});
 
 }
 this.CarritoService.getBorrarProductosCarritoTodos(this.usuarioId).subscribe((data)=>{
-  this.getProductosCarritoByUsuario();
-  alert("Pedido tramitado con exito");
+this.getProductosCarritoByUsuario();
+alert("Pedido tramitado con exito");
 });
 });
-  }
+    });
+}
+
  
   sumar(item: any) {
     item.cantidad = (item.cantidad || 1) + 1;

@@ -1,7 +1,9 @@
 <?php
+
 namespace Larit\Proyecto\Config;
 
-class ConfigBD{
+class ConfigBD
+{
     public static $SERVER_NAME_BD = "localhost";
     public static $SERVER_PORT_BD = "3306";
     public static $CHARSET = "UTF8";

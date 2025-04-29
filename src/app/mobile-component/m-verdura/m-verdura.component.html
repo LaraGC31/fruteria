@@ -2,8 +2,8 @@
     <div id="coleccion">
         @for(data of data; track data.id){ 
             <div class="card"> 
-                <img [src]=`${environment.baseUrl2 + data.foto}` alt="foto">
-                <h3>{{data.nombre.toUpperCase()}}</h3>
+                <img [src]="'http://localhost/proyecto/back-end/assets/uploads/' + data.foto"alt="foto">              
+                  <h3>{{data.nombre.toUpperCase()}}</h3>
                 <p class="precio">{{data.precio}} €/kg</p>
                 <p class="descripcion">{{data.descripcion}}</p>
                 @if(usuarioId != null && usuarioEmail != ""){

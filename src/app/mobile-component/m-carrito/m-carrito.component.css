@@ -72,3 +72,8 @@ text-align: center;
 .control-cantidad button:hover {
     background-color: #ddd;
 }
+#dibuja h3{
+    margin-top: 2vh;
+    font-size:2vh;
+    text-align: center;
+}
