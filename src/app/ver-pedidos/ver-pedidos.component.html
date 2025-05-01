@@ -1,1 +1,47 @@
-<p>ver-pedidos works!</p>
+@if(cambioEstado){
+<div id="cambioEstado">
+    <h2>Cambiar estado</h2>
+    <form (ngSubmit)="onSubmit()">
+        <label for="id">Número de usuario:</label>
+        <input type="text" id="id" name="id" [(ngModel)]="evento" readonly="readonly">
+        <label for="estado">Estado:</label>
+        <select name="estado" id="estado" [(ngModel)]="estadoNuevo" (ngModelChange)="cambiarSelectEstado($event)">
+         @if(estadoActual === "pendiente"){
+            <option value="en fabricacion">En Fabricacion</option>
+         }@else if(estadoActual === "en fabricacion"){
+            <option value="en reparto">En Reparto</option>
+         }@else if(estadoActual === "en reparto"){
+            <option value="finalizado y entregado">Finalizado y Entregado</option>
+         }
+        </select>
+        <input type="submit" id="botones" value="Cambiar Estado">
+    </form>
+</div>
+}
+<div class="table">
+        <div class="row header">
+            <div class="cell">Número de usuario</div>
+            <div class="cell">Nombre y Apellidos del usuario</div>
+            <div class="cell">Fecha de realización</div>
+            <div class="cell">Estado</div>
+            <div class="cell">Total Precio</div>
+            <div class="cell">Otros</div>
+        </div>
+        @for( data of data; track data.id){
+            <div class="row">
+            <div class="cell">{{data?.id}}</div>
+            <div class="cell">{{data?.nombreApellidos.toUpperCase()}}</div>
+            <div class="cell">{{data?.fecha}}</div>
+            <div class="cell">{{data?.estado.toUpperCase()}} 
+            @if(data?.estado != "finalizado y entregado"){
+                <div>
+                    <button (click)="cambiarEstado(data.id, data.estado)">Cambio de estado</button>
+                  </div> 
+            }
+            </div>
+            <div class="cell">{{data?.totalPrecio}}€</div>
+            <div class="cell" (click)="generarPdf(data.nombreApellidos,data.email,data.provincia,data.direccion,data.codPostal,data.telefono,data.nombre, data.cantidad, data.precio)"><img src="../../assets/adobe_pdf_document_14979.png" alt="pdf"></div>
+        </div>
+
+        }
+</div>

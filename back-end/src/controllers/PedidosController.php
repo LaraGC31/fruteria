@@ -76,6 +76,15 @@ public function getOnePedidos(){
     echo json_encode($pedidoModel->getOnePedidos($idUsuario)); 
 }
 
-
-
+public function getObtenerTodosLosPedidos(){
+$pedidoModel = new PedidosModel();
+    header('Content-Type: application/json');
+    echo json_encode($pedidoModel->getObtenerTodosLosPedidos());
+}
+public function cambioEstadoPedidos(){
+    $id = $_GET["id"]??"";
+    $estado = $_GET["estado"]??"";
+    $pedidoModel = new PedidosModel();
+    $pedidoModel = $pedidoModel->cambioEstadoPedidos($estado, $id);
+}
 }

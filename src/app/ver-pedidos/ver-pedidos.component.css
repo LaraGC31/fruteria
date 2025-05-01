@@ -1,0 +1,38 @@
+.table{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 2vh;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.row{
+    display: table-row;
+
+}
+.header{
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    height: 6vh;
+}
+.cell{
+    display: table-cell;
+    border: 1px solid #ddd;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 2vh;
+}
+button, #botones{
+   border: none;
+   background-color: #4CAF50;
+padding-inline: 1vh;
+}
+img{
+    width: 15vh;
+    height: 15vh;
+}
+

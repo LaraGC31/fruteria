@@ -77,5 +77,36 @@ try {
  return NULL;
 }  
 } 
+public function getObtenerTodosLosPedidos(){
+    try {
+    
+        $consulta = "select p.id, p.fecha, p.estado, p.totalPrecio, u.nombreApellidos, u.email, u.provincia, u.direccion, u.codPostal, u.telefono,pr.nombre,dp.cantidad,dp.precio from pedidos p join usuarios u on p.idUsuario = u.id join detallepedido dp on p.id = dp.idPedido join productos pr on dp.idProducto = pr.id ORDER BY p.id, pr.nombre ";
+        $sentencia = $this->conn->prepare($consulta);
+        $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+        $sentencia->execute();
+      
+        return $sentencia->fetchAll();
+        
+    } catch (\PDOException $e) {
+        echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+        return NULL;
 
+    }
+}
+public function cambioEstadoPedidos($estado, $id){
+    try {
+    
+        $consulta = "update pedidos set estado = :estado where id = :id";
+        $sentencia = $this->conn->prepare($consulta);
+        $sentencia->bindParam(':estado', $estado);
+        $sentencia->bindParam(':id', $id);
+       return $sentencia->execute();
+      
+    
+    } catch (\PDOException $e) {
+        echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+        return NULL;
+
+    }
+}
 }

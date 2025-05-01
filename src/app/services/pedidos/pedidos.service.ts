@@ -33,5 +33,14 @@ export class PedidosService {
       `${environment.baseUrl}Pedidos/getOnePedidos?idUsuario=${idUsuario}`
     );
   }
-  
+  getObtenerTodosLosPedidos(){
+    return this.http.get(
+      `${environment.baseUrl}Pedidos/getObtenerTodosLosPedidos`
+    );
+  }
+  cambioEstadoPedidos(estado:any, id:any){
+    return this.http.get(
+      `${environment.baseUrl}Pedidos/cambioEstadoPedidos?estado=${estado}&id=${id}`
+    );
+  }
 }
