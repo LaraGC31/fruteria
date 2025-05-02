@@ -14,14 +14,19 @@
             <option value="finalizado y entregado">Finalizado y Entregado</option>
          }
         </select>
+        @if(botonCambioEstado){
+            @if(estadoNuevo === "" || typeof estadoNuevo == 'undefined'){
+            <p id="error">No se ha podido seleccionar</p>
+            }
+            }
         <input type="submit" id="botones" value="Cambiar Estado">
     </form>
 </div>
 }
 <div class="table">
         <div class="row header">
-            <div class="cell">Número de usuario</div>
-            <div class="cell">Nombre y Apellidos del usuario</div>
+            <div class="cell">Número de identificador</div>
+            <div class="cell">Nombre y Apellidos</div>
             <div class="cell">Fecha de realización</div>
             <div class="cell">Estado</div>
             <div class="cell">Total Precio</div>
@@ -40,7 +45,7 @@
             }
             </div>
             <div class="cell">{{data?.totalPrecio}}€</div>
-            <div class="cell" (click)="generarPdf(data.nombreApellidos,data.email,data.provincia,data.direccion,data.codPostal,data.telefono,data.nombre, data.cantidad, data.precio)"><img src="../../assets/adobe_pdf_document_14979.png" alt="pdf"></div>
+            <div class="cell" (click)="generarPdf(data)"><img src="../../assets/adobe_pdf_document_14979.png" alt="pdf"></div>
         </div>
 
         }

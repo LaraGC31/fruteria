@@ -1,12 +1,9 @@
 import { Component,OnInit } from '@angular/core';
+import jspdf from 'jspdf';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import {PedidosService} from '../services/pedidos/pedidos.service';
-import jspdf from 'jspdf';
-import html2canvas from 'html2canvas';
-import { CommonModule } from '@angular/common';
-
-
 @Component({
   selector: 'app-ver-pedidos',
   imports: [FormsModule, CommonModule],
@@ -18,6 +15,7 @@ data:any;
 evento:any;
 estadoActual:any = '';
 estadoNuevo:any;
+botonCambioEstado:boolean = false;
 cambioEstado:boolean = false;
 constructor(private http: HttpClient,
   private PedidosService:PedidosService
@@ -34,7 +32,7 @@ this.getObtenerTodosLosPedidos();
 });
 }
 cambiarSelectEstado(evento:any){
-
+  this.botonCambioEstado = false;
 }
   getObtenerTodosLosPedidos(){
   this.PedidosService.getObtenerTodosLosPedidos().subscribe((data)=>{
@@ -54,15 +52,7 @@ cambiarSelectEstado(evento:any){
    this.cambioEstado = true;
   }
   public generarPdf(
-   nombreApellidos:any,
-   email:any,
-   provincia:any,
-   direccion:any,
-   codPostal:any,
-   telefono:any,
-   nombre:any,
-   cantidad:any,
-   precio:any
+   data:any
   ) {
     const pdf = new jspdf('p', 'mm', 'a4');
     let position = 20;
@@ -76,23 +66,27 @@ cambiarSelectEstado(evento:any){
 
     pdf.setFontSize(12);
     position += 25;
-    pdf.text(`NOMBRE DEL USUARIO: ${nombreApellidos.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`EMAIL: ${email.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`PROVINCIA: ${provincia.toUpperCase()}`, 10, (position += 10));
+    pdf.text(`NOMBRE DEL USUARIO: ${data.nombreApellidos.toUpperCase()}`, 10, (position += 10));
+    pdf.text(`EMAIL: ${data.email.toUpperCase()}`, 10, (position += 10));
+    pdf.text(`PROVINCIA: ${data.provincia.toUpperCase()}`, 10, (position += 10));
  
-    pdf.text(`DIRECCION: ${direccion.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`CODIGO POSTAL: ${codPostal.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`TELEFONO: ${telefono.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`NOMBRE DE LA FRUTA O VERDURA: ${nombre.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`CANTIDAD: ${cantidad.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`PRECIO: ${precio.toUpperCase()} €`, 10, (position += 10));
+    pdf.text(`DIRECCION: ${data.direccion.toUpperCase()}`, 10, (position += 10));
+    pdf.text(`CODIGO POSTAL: ${data.codPostal}`, 10, (position += 10));
+    pdf.text(`TELEFONO: ${data.telefono}`, 10, (position += 10));
+    const productos = this.data.filter((p: any) => p.id === data.id);
+
+    productos.forEach((prod:any) => {
+    pdf.text(`NOMBRE DE LA FRUTA O VERDURA: ${prod.nombre.toUpperCase()}`, 10, (position += 10));
+    pdf.text(`CANTIDAD: ${prod.cantidad}`, 10, (position += 10));
+    pdf.text(`PRECIO: ${prod.precio} €`, 10, (position += 10));
+    });
     const pdfBlob = pdf.output('blob');
 
     const pdfUrl = URL.createObjectURL(pdfBlob);
 
     window.open(pdfUrl, '_blank');
 
-    pdf.save('pedidos.pdf');
+    pdf.save(`pedidos.pdf`);
   }
 
 }
