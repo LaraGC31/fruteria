@@ -32,7 +32,12 @@ button, #botones{
 padding-inline: 1vh;
 }
 img{
-    width: 5vh;
-    height: 5vh;
+    width: 7vh;
+    height: 7vh;
 }
-
+#error{
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 60vh;
+}

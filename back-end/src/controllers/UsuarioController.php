@@ -89,4 +89,11 @@ class UsuarioController{
         header('Content-Type: application/json');
         echo json_encode($dataRegistro); 
     }
+    public function datosUsuarios() {
+        $id = $_GET["id"]??"";
+        $usuarioModel = new UsuarioModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($usuarioModel->datosUsuario($id));
+    }
 }

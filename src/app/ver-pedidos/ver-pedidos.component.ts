@@ -24,12 +24,19 @@ ngOnInit(){
 this.getObtenerTodosLosPedidos();
 }
 onSubmit(){
+  this.cambioEstado = true;
+  if (typeof this.estadoNuevo == 'undefined' || this.estadoNuevo === '') {
+    this.botonCambioEstado = true;
+  }else{
 this.PedidosService.cambioEstadoPedidos(this.estadoNuevo, this.evento).subscribe((data)=>{
 setTimeout(() => {
   this.cambioEstado = false;
+  this.botonCambioEstado = false;
 this.getObtenerTodosLosPedidos();
+this.estadoNuevo = "";
 });
 });
+  }
 }
 cambiarSelectEstado(evento:any){
   this.botonCambioEstado = false;
@@ -65,7 +72,6 @@ cambiarSelectEstado(evento:any){
     pdf.line(10, 15, 200, 15);
 
     pdf.setFontSize(12);
-    position += 25;
     pdf.text(`NOMBRE DEL USUARIO: ${data.nombreApellidos.toUpperCase()}`, 10, (position += 10));
     pdf.text(`EMAIL: ${data.email.toUpperCase()}`, 10, (position += 10));
     pdf.text(`PROVINCIA: ${data.provincia.toUpperCase()}`, 10, (position += 10));
@@ -73,13 +79,23 @@ cambiarSelectEstado(evento:any){
     pdf.text(`DIRECCION: ${data.direccion.toUpperCase()}`, 10, (position += 10));
     pdf.text(`CODIGO POSTAL: ${data.codPostal}`, 10, (position += 10));
     pdf.text(`TELEFONO: ${data.telefono}`, 10, (position += 10));
-    const productos = this.data.filter((p: any) => p.id === data.id);
+ 
+  
+    const nombres = data.productos.split(',');
+    const cantidades = data.cantidades.split(',');
+    const precios = data.precios.split(',');
+  
+    for (let i = 0; i < nombres.length; i++) {
+      const nombre = nombres[i].trim();
+      const cantidad = cantidades[i] ? cantidades[i].trim() : '0';
+      const precio = precios[i] ? precios[i].trim() : '0';
+  
+      pdf.text(`NOMBRE DE LA FRUTA O VERDURA: ${nombre.toUpperCase()}`, 10, (position += 10));
+      pdf.text(`CANTIDAD: ${cantidad}`, 10, (position += 10));
+      pdf.text(`PRECIO: ${precio} €`, 10, (position += 10));
+    }
+    pdf.text(`EN CASO DEL PRECIO NO CUADRAR ES QUE FALTAN LOS 2€`, 10, (position += 10));
 
-    productos.forEach((prod:any) => {
-    pdf.text(`NOMBRE DE LA FRUTA O VERDURA: ${prod.nombre.toUpperCase()}`, 10, (position += 10));
-    pdf.text(`CANTIDAD: ${prod.cantidad}`, 10, (position += 10));
-    pdf.text(`PRECIO: ${prod.precio} €`, 10, (position += 10));
-    });
     const pdfBlob = pdf.output('blob');
 
     const pdfUrl = URL.createObjectURL(pdfBlob);

@@ -29,4 +29,9 @@ export class UsuarioService {
       `${environment.baseUrl}Usuario/aniadirUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}`
     );
   }
+  datosUsuarios(id:any){
+    return this.http.get(
+      `${environment.baseUrl}Usuario/datosUsuarios?id=${id}`
+    );
+  }
 }

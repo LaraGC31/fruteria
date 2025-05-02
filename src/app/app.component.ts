@@ -12,7 +12,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-
+data:any;
   title = 'fruteria';
   usuario: any = {id: null, nombre: "", email: "", rol: ""};
 
@@ -117,5 +117,8 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       window.location.reload();
     }, 100);
+  }
+  datosUsuarios(){
+    this.router.navigate(['/datos-usuarios']); 
   }
 }

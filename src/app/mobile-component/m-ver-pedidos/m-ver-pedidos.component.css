@@ -1,0 +1,42 @@
+.table{
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 2vh;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+.row{
+    margin-top: 6vh;
+}
+.header{
+   display: none;
+}
+.cell{
+    display: table-cell;
+    border: 1px solid #797878;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 2vh;
+}
+button, #botones{
+   border: none;
+   background-color: #4CAF50;
+padding-inline: 1vh;
+}
+img{
+    width: 7vh;
+    height: 7vh;
+}
+#error{
+    background-color: red;
+    color: white;
+    text-align: center;
+    width: 60vh;
+}
+.id{
+    background-color: #4CAF50;
+}

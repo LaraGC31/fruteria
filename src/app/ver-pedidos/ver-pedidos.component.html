@@ -34,17 +34,17 @@
         </div>
         @for( data of data; track data.id){
             <div class="row">
-            <div class="cell">{{data?.id}}</div>
-            <div class="cell">{{data?.nombreApellidos.toUpperCase()}}</div>
-            <div class="cell">{{data?.fecha}}</div>
-            <div class="cell">{{data?.estado.toUpperCase()}} 
+            <div class="cell">{{data.id}}</div>
+            <div class="cell">{{data.nombreApellidos.toUpperCase()}}</div>
+            <div class="cell">{{data.fecha}}</div>
+            <div class="cell">{{data.estado.toUpperCase()}} 
             @if(data?.estado != "finalizado y entregado"){
                 <div>
                     <button (click)="cambiarEstado(data.id, data.estado)">Cambio de estado</button>
                   </div> 
             }
             </div>
-            <div class="cell">{{data?.totalPrecio}}€</div>
+            <div class="cell">{{data.totalPrecio}}€</div>
             <div class="cell" (click)="generarPdf(data)"><img src="../../assets/adobe_pdf_document_14979.png" alt="pdf"></div>
         </div>
 

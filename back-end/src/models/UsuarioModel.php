@@ -21,7 +21,18 @@ class UsuarioModel extends Model{
             return NULL;
         }
     }
-    
+    public function datosUsuario($id){
+        try{
+            $consulta ="select * from usuarios where id = :id";
+
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':id', $id);
+            $sentencia->execute();
+            return   $sentencia->fetch(\PDO::FETCH_OBJ);
+        } catch(\PDOException $e){
+            return NULL;
+        }
+    }
 
     public function aniadirUsuario($atributos){
         $nombre = $atributos[0];
