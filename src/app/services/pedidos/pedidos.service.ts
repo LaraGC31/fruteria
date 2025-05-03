@@ -38,6 +38,11 @@ export class PedidosService {
       `${environment.baseUrl}Pedidos/getObtenerTodosLosPedidos`
     );
   }
+  getObtenerDelUsuario(id:any){
+    return this.http.get(
+      `${environment.baseUrl}Pedidos/getObtenerDelUsuario?id=${id}`
+    );
+  }
   cambioEstadoPedidos(estado:any, id:any){
     return this.http.get(
       `${environment.baseUrl}Pedidos/cambioEstadoPedidos?estado=${estado}&id=${id}`

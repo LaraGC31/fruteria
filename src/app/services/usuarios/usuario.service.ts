@@ -34,4 +34,18 @@ export class UsuarioService {
       `${environment.baseUrl}Usuario/datosUsuarios?id=${id}`
     );
   }
+  modificarUsuarios(
+  nombre:string, 
+  email:string, 
+  password:string,
+  provincia:string,
+  direccion:string, 
+  codPostal:string,
+  telefono:string,
+  id:any
+  ): Observable<any>  {
+    return this.http.get(
+      `${environment.baseUrl}Usuario/modificarUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}&id=${id}`
+    );
+  }
 }

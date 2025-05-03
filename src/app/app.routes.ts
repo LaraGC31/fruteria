@@ -2,7 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 import {VerduraComponent} from './verdura/verdura.component';
 import {FrutaComponent} from './fruta/fruta.component';
 import {InicioComponent} from './inicio/inicio.component';
-import {UsuarioComponent} from './usuario/usuario.component';
 import {CarritoComponent} from './carrito/carrito.component';
 import {LoginComponent} from './login/login.component';
 import {RegistroComponent} from './registro/registro.component';
@@ -25,7 +24,6 @@ export const routes: Routes = [
 {path:"fruta", component:FrutaComponent},   
 {path:"inicio", component:InicioComponent},    
 {path:"", component:InicioComponent},    
-{path:"perfil-usuario", component:UsuarioComponent},
 {path:"carrito", component:CarritoComponent},   
 {path:"login", component:LoginComponent},   
 {path:"registro", component:RegistroComponent},   
@@ -41,7 +39,7 @@ export const routes: Routes = [
 {path:"m-login", component:MLoginComponent},   
 {path:"m-registro", component:MRegistroComponent},   
 {path:"m-ver-pedidos", component:MVerPedidosComponent},   
-{path:"m-aniadirFV", component: MFormularioFrutasVerdurasComponent}   
+{path:"m-aniadirFV", component: MFormularioFrutasVerdurasComponent},   
 {path:"m-datos-usuarios", component: MDatosUsuariosComponent}   
 
 ];

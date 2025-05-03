@@ -69,4 +69,39 @@ class UsuarioModel extends Model{
         }  
 
     }
+    public function modificarUsuario($nombre, $email, $password, $provincia, $direccion,$codPostal,$telefono, $id){
+        try{
+            if($password == ""){
+            $consulta ="update usuarios set nombreApellidos = :nombre, email = :email, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono where id = :id";
+
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':id', $id);
+            $sentencia->bindParam(':nombre', $nombre);
+            $sentencia->bindParam(':email', $email);
+            $sentencia->bindParam(':provincia', $provincia);
+            $sentencia->bindParam(':direccion', $direccion);
+            $sentencia->bindParam(':codPostal', $codPostal);
+            $sentencia->bindParam(':telefono', $telefono);
+
+
+            return $sentencia->execute();
+            }else{
+                $consulta ="update usuarios set nombreApellidos = :nombre, email = :email, password = :password, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono where id = :id";
+
+                $sentencia = $this->conn->prepare($consulta);
+                $sentencia->bindParam(':id', $id);
+                $sentencia->bindParam(':nombre', $nombre);
+                $sentencia->bindParam(':email', $email);
+                $sentencia->bindParam(':password', $password);
+                $sentencia->bindParam(':provincia', $provincia);
+            $sentencia->bindParam(':direccion', $direccion);
+            $sentencia->bindParam(':codPostal', $codPostal);
+            $sentencia->bindParam(':telefono', $telefono);
+    
+              return  $sentencia->execute();
+            }
+        } catch(\PDOException $e){
+            return NULL;
+        }
+    }
 }

@@ -81,6 +81,12 @@ $pedidoModel = new PedidosModel();
     header('Content-Type: application/json');
     echo json_encode($pedidoModel->getObtenerTodosLosPedidos());
 }
+public function getObtenerDelUsuario(){
+    $id = $_GET["id"]??"";
+    $pedidoModel = new PedidosModel();
+        header('Content-Type: application/json');
+        echo json_encode($pedidoModel->getObtenerDelUsuario($id));
+    }
 public function cambioEstadoPedidos(){
     $id = $_GET["id"]??"";
     $estado = $_GET["estado"]??"";

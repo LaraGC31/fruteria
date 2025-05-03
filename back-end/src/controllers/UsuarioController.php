@@ -96,4 +96,24 @@ class UsuarioController{
         header('Content-Type: application/json');
         echo json_encode($usuarioModel->datosUsuario($id));
     }
+    public function modificarUsuario(){
+        $nombre = $_GET["nombre"]??"";
+
+        $buscar = ['%C3%A1', '%C3%A9', '%C3%AD', '%C3%B3', '%C3%BA', '%C3%81', '%C3%89', '%C3%8D', '%C3%93', '%C3%9A', '%C3%B1', '%C3%91'];
+        $reemplazar = ['á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú', 'ñ', 'Ñ'];
+        
+
+        $nombreMod = str_replace($buscar, $reemplazar, $nombre);
+        $password = $_GET["password"]??"";
+        $passwordSecure =  password_hash($password,PASSWORD_DEFAULT);
+        $id = $_GET["id"]??"";
+    $email =  $_GET["email"]??"";
+    $telefono = $_GET["telefono"]??"";
+    $direccion = $_GET["direccion"]??"";
+    $codPostal = $_GET["codPostal"]??"";
+    $provincia = $_GET["provincia"]??"";
+  $usuarioModel = new UsuarioModel();
+  $usuarioModel->modificarUsuario($nombreMod,$email, $passwordSecure, $provincia, $direccion,$codPostal, $telefono, $id);
+       
+    }
 }

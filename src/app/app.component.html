@@ -86,12 +86,12 @@
             <a href="#" routerLink="/ver-pedidos">Ver pedidos</a>
           </li>
             <li>
-            <p id="usuarioNombre">{{usuarioNombre}}</p>
+            <p id="usuarioNombre" (click)="datosUsuarios()">{{usuarioNombre}}</p>
             <button id="cerrar" (click)="cerrarSesion()">Cerrar Sesión</button>
           </li>
         }@else {
           <li>
-            <p id="usuarioNombre">{{usuarioNombre}}</p>
+            <p id="usuarioNombre" (click)="datosUsuarios()">{{usuarioNombre}}</p>
             <button id="cerrar" (click)="cerrarSesion()">Cerrar Sesión</button>
           </li>
         }

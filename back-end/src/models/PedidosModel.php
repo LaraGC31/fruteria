@@ -112,4 +112,25 @@ public function cambioEstadoPedidos($estado, $id){
 
     }
 }
+
+public function getObtenerDelUsuario($id){
+    try {
+    
+        $consulta = "select p.id, p.fecha, p.estado, p.totalPrecio, u.nombreApellidos, u.email, u.provincia, u.direccion, u.codPostal, u.telefono,
+         GROUP_CONCAT(pr.nombre ORDER BY dp.id) AS productos, 
+    GROUP_CONCAT(dp.cantidad ORDER BY dp.id) AS cantidades, 
+    GROUP_CONCAT(dp.precio ORDER BY dp.id) AS precios from pedidos p join usuarios u on p.idUsuario = u.id join detallepedido dp on p.id = dp.idPedido join productos pr on dp.idProducto = pr.id where u.id = :id GROUP BY p.id,u.id  ORDER BY p.id ";
+        $sentencia = $this->conn->prepare($consulta);
+        $sentencia->bindParam(':id', $id);
+        $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+        $sentencia->execute();
+      
+        return $sentencia->fetchAll();
+        
+    } catch (\PDOException $e) {
+        echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+        return NULL;
+
+    }
+}
 }
