@@ -9,8 +9,8 @@
             <input type="email" name="email" id="email" [(ngModel)]="data.email">
         </p>
         <p class="input-container">
-            <label for="passwordNueva">Contraseña*:</label>
-            <input type="password" id="passwordNueva" name="passwordNueva"[(ngModel)]="passwordNueva">
+            <label for="password">Contraseña*:</label>
+            <input type="password" id="password" name="passwordNueva"[(ngModel)]="passwordNueva">
         </p>
         <p class="input-container">
             <label for="telefono">Telefono:</label>
@@ -42,6 +42,7 @@
             <div class="cell">{{datos.estado.toUpperCase()}} </div>
             <div class="cell">{{datos.totalPrecio}}€</div>
             <div class="cell" (click)="generarPdf(datos)"><img src="../../assets/adobe_pdf_document_14979.png" alt="pdf"></div>
+            <button class="cell" (click)="borrarDatos(datos.id)">Borrar</button>
             </div>
         }
     </div>

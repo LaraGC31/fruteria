@@ -43,7 +43,7 @@ export class UsuarioService {
   codPostal:string,
   telefono:string,
   id:any
-  ): Observable<any>  {
+  ){
     return this.http.get(
       `${environment.baseUrl}Usuario/modificarUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}&id=${id}`
     );

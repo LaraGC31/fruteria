@@ -48,4 +48,9 @@ export class PedidosService {
       `${environment.baseUrl}Pedidos/cambioEstadoPedidos?estado=${estado}&id=${id}`
     );
   }
+  borrarPedido(id:any){
+    return this.http.get(
+      `${environment.baseUrl}Pedidos/borrarPedido?id=${id}`
+    );
+  }
 }

@@ -34,7 +34,7 @@ constructor(private usuarioService: UsuarioService, private dataService: DataSig
       this.passwordNueva = "";
     }
     this.usuarioService.modificarUsuarios(this.data.nombreApellidos, this.data.email, this.passwordNueva,this.data.provincia, this.data.direccion, this.data.codPostal, this.data.telefono, this.usuarioId ).subscribe(data => {
-     window.location.reload();
+   window.location.reload();
     });
   }
 get usuarioEmail(): string{
@@ -112,6 +112,11 @@ getObtenerDelUsuario(){
  
      pdf.save(`pedidos.pdf`);
    }
- 
+ borrarDatos(id:any){
+  this.PedidosService.borrarPedido(id).subscribe((data)=>{
+    window.location.reload();
+
+  })
+ }
  }
  

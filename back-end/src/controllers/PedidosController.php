@@ -93,4 +93,9 @@ public function cambioEstadoPedidos(){
     $pedidoModel = new PedidosModel();
     $pedidoModel = $pedidoModel->cambioEstadoPedidos($estado, $id);
 }
+public function borrarPedido(){
+    $id = $_GET["id"]??"";
+    $pedidoModel = new PedidosModel();
+    $pedidoModel = $pedidoModel->borrarPedido($id);
+}
 }

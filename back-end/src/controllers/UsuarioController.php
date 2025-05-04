@@ -105,7 +105,7 @@ class UsuarioController{
 
         $nombreMod = str_replace($buscar, $reemplazar, $nombre);
         $password = $_GET["password"]??"";
-        $passwordSecure =  password_hash($password,PASSWORD_DEFAULT);
+        $passwordSecure = $password !== "" ? password_hash($password,PASSWORD_DEFAULT): "";
         $id = $_GET["id"]??"";
     $email =  $_GET["email"]??"";
     $telefono = $_GET["telefono"]??"";

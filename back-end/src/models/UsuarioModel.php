@@ -71,7 +71,7 @@ class UsuarioModel extends Model{
     }
     public function modificarUsuario($nombre, $email, $password, $provincia, $direccion,$codPostal,$telefono, $id){
         try{
-            if($password == ""){
+            if($password == ''){
             $consulta ="update usuarios set nombreApellidos = :nombre, email = :email, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono where id = :id";
 
             $sentencia = $this->conn->prepare($consulta);

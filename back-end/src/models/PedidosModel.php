@@ -112,6 +112,25 @@ public function cambioEstadoPedidos($estado, $id){
 
     }
 }
+public function borrarPedido( $id){
+    try {
+    
+        $consulta = "delete from detallepedido where idPedido = :id ";
+        $sentencia = $this->conn->prepare($consulta);
+        $sentencia->bindParam(':id', $id);
+        $sentencia->execute();
+        $consulta = "delete from pedidos where id = :id ";
+        $sentencia = $this->conn->prepare($consulta);
+        $sentencia->bindParam(':id', $id);
+       return $sentencia->execute();
+      
+    
+    } catch (\PDOException $e) {
+        echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+        return NULL;
+
+    }
+}
 
 public function getObtenerDelUsuario($id){
     try {
