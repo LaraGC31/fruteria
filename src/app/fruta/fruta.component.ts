@@ -73,4 +73,10 @@ data:any = '';
   });
 })
   }
+  borrarProductos(id:any){
+    this.productosService.borrarProductos(id).subscribe(data=>{
+      window.location.reload();
+
+    })
+  }
 }

@@ -10,6 +10,8 @@
         @if(usuarioId != null && usuarioEmail != ""){
             @if(usuarioRol != 'A'){
         <button class="btn-carrito" (click)="aniadirCarrito(usuarioId,data.id,data.precio)">Añadir al carrito</button>
+            }@else {
+                <button class="btn-carrito" (click)="borrarProductos(data.id)">Borrar</button>
             }
         }
     </div>

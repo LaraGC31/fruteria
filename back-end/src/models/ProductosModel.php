@@ -89,4 +89,19 @@ class ProductosModel extends Model{
 
         }
     }
+    public function borrarProductos($id){
+        try {
+        
+            $consulta = "delete from productos where id = :id";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':id', $id);
+
+
+            return $sentencia->execute();
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
 }

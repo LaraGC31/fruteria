@@ -33,4 +33,7 @@ export class ProductosService {
   getProductos(){
     return this.http.get(`${environment.baseUrl}Productos/getProductos`);
   }
+  borrarProductos(id:any){
+    return this.http.get(`${environment.baseUrl}Productos/borrarProductos?id=${id}`);
+  }
 }

@@ -61,4 +61,11 @@ class ProductosController{
         header('Content-Type: application/json');
         echo json_encode($productosModel->getProductos());
     }
+    public function borrarProductos() {
+        $productos = $_GET["id"]??"";
+        $productosModel = new ProductosModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($productosModel->borrarProductos($productos));
+    }
 }
