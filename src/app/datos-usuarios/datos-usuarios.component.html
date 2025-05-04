@@ -34,17 +34,22 @@
         <input type="submit" id="guardar" value="Guardar datos">
     
     </form>
-    @if(datos != ''){
     <div id="pedidosrealizados">
+        @if(datos != ''){
         @for( datos of datos; track datos.id){
             <div class="pedido">
             <div class="cell">{{datos.fecha}}</div>
             <div class="cell">{{datos.estado.toUpperCase()}} </div>
             <div class="cell">{{datos.totalPrecio}}€</div>
             <div class="cell" (click)="generarPdf(datos)"><img src="../../assets/adobe_pdf_document_14979.png" alt="pdf"></div>
+            @if(datos.estado == "pendiente"){
             <button class="cell" (click)="borrarDatos(datos.id)">Borrar</button>
+            }
             </div>
         }
+        }@else{
+            <h1>No has realizado ningún pedido ahora</h1>
+        }
+    
     </div>
-}
 </div>
