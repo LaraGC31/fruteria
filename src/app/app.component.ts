@@ -121,4 +121,7 @@ data:any;
   datosUsuarios(){
     this.router.navigate(['/datos-usuarios']); 
   }
+  datosUsuariosM(){
+    this.router.navigate(['/m-datos-usuarios']); 
+  }
 }

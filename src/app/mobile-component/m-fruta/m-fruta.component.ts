@@ -75,4 +75,10 @@ export class MFrutaComponent implements OnInit {
   });
 })
   }
+  borrarProductos(id:any){
+    this.productosService.borrarProductos(id).subscribe(data=>{
+      window.location.reload();
+
+    })
+  }
 }
