@@ -12,7 +12,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-data:any;
   title = 'fruteria';
   usuario: any = {id: null, nombre: "", email: "", rol: ""};
 
@@ -122,6 +121,6 @@ data:any;
     this.router.navigate(['/datos-usuarios']); 
   }
   datosUsuariosM(){
-    this.router.navigate(['/m-datos-usuarios']); 
+    this.router.navigate(['/m-datos-usuarios']);
   }
 }
