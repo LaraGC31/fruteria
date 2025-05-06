@@ -121,6 +121,7 @@ export class AppComponent implements OnInit {
     this.router.navigate(['/datos-usuarios']); 
   }
   datosUsuariosM(){
+    this.ocultarSidebar();
     this.router.navigate(['/m-datos-usuarios']);
   }
 }
