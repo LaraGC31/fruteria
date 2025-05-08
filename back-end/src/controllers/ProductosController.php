@@ -68,4 +68,16 @@ class ProductosController{
         header('Content-Type: application/json');
         echo json_encode($productosModel->borrarProductos($productos));
     }
+    public function getBorrarProductoEnOtroSitio(){
+        $id = $_GET["id"]??"";
+        $productosModel =  new ProductosModel();
+      $productos = $productosModel->getBorrarProductoEnOtroSitio($id);
+      header('Content-Type: application/json');
+
+      if (empty($productos)) {
+        echo json_encode(["puedeEliminar" => true]);
+    } else {
+        echo json_encode(["puedeEliminar" => false, "mensaje" => "No se puede eliminar: el producto está en un carrito o pedido."]);
+    }
+    }
 }

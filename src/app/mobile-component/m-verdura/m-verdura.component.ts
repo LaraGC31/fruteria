@@ -72,9 +72,17 @@ export class MVerduraComponent  implements OnInit{
 });
   }
   borrarProductos(id:any){
-    this.productosService.borrarProductos(id).subscribe(data=>{
-      window.location.reload();
-
+    this.productosService.getBorrarProductoEnOtroSitio(id).subscribe((data:any)=>{
+      if(data.puedeEliminar){
+        this.productosService.borrarProductos(id).subscribe(data=>{
+      
+          window.location.reload();
+    
+        })
+      }else{
+        alert("No se puede");
+      }
     })
+   
   }
 }

@@ -62,6 +62,30 @@ class ProductosModel extends Model{
         
             $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'verdura'";
             $sentencia = $this->conn->prepare($consulta);
+            
+            $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+            $sentencia->execute();
+          
+            $resultado = $sentencia->fetchAll();
+            return $resultado;
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
+    public function getBorrarProductoEnOtroSitio($id){
+        try {
+        
+            $consulta = "SELECT p.id AS producto_id
+FROM productos p
+LEFT JOIN detallepedido d ON p.id = d.idProducto
+LEFT JOIN carrito c ON p.id = c.idProducto
+WHERE p.id = :id AND (d.idProducto IS NOT NULL OR c.idProducto IS NOT NULL)
+";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':id', $id);
+
             $sentencia->setFetchMode(\PDO::FETCH_OBJ);
             $sentencia->execute();
           

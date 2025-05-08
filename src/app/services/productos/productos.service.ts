@@ -36,4 +36,8 @@ export class ProductosService {
   borrarProductos(id:any){
     return this.http.get(`${environment.baseUrl}Productos/borrarProductos?id=${id}`);
   }
+  getBorrarProductoEnOtroSitio(id:any){
+    return this.http.get(`${environment.baseUrl}Productos/getBorrarProductoEnOtroSitio?id=${id}`);
+
+  }
 }
