@@ -1,12 +1,11 @@
 #general{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
     height: 100vh;
     width: 100%;
     background-color: #f5fff5;
-padding-top: 110vh;
 }
 form , #pedidosrealizados{
   background-color: #ffffff;
