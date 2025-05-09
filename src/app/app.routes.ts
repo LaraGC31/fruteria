@@ -17,7 +17,8 @@ import { MRegistroComponent } from './mobile-component/m-registro/m-registro.com
 import { MVerPedidosComponent } from './mobile-component/m-ver-pedidos/m-ver-pedidos.component';
 import { MDatosUsuariosComponent } from "./mobile-component/m-datos-usuarios/m-datos-usuarios.component";
 import { MVerduraComponent } from './mobile-component/m-verdura/m-verdura.component';
-
+import { VerBloqueadosFrutaComponent } from './ver-bloqueados-fruta/ver-bloqueados-fruta.component';
+import { VerBloqueadosVerduraComponent } from './ver-bloqueados-verdura/ver-bloqueados-verdura.component';
 
 export const routes: Routes = [
 
@@ -39,6 +40,8 @@ export const routes: Routes = [
 {path:"m-registro", component:MRegistroComponent},   
 {path:"m-ver-pedidos", component:MVerPedidosComponent},   
 {path:"m-aniadirFV", component: MFormularioFrutasVerdurasComponent},  
-{path:"m-datos-usuarios", component: MDatosUsuariosComponent}  
+{path:"m-datos-usuarios", component: MDatosUsuariosComponent},  
+{path:"verBloqueadosfruta", component: VerBloqueadosFrutaComponent},  
+{path:"verBloqueadosverdura", component: VerBloqueadosVerduraComponent}  
 
 ];

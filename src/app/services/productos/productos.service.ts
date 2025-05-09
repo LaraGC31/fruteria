@@ -30,11 +30,20 @@ export class ProductosService {
   getProductosByVerdura(){
     return this.http.get(`${environment.baseUrl}Productos/getProductosByVerdura`);
   }
+  getProductosByFrutaBloqueados(){
+    return this.http.get(`${environment.baseUrl}Productos/getProductosByFrutaBloqueados`);
+  }
+  getProductosByVerduraBloqueados(){
+    return this.http.get(`${environment.baseUrl}Productos/getProductosByVerduraBloqueados`);
+  }
   getProductos(){
     return this.http.get(`${environment.baseUrl}Productos/getProductos`);
   }
   borrarProductos(id:any){
     return this.http.get(`${environment.baseUrl}Productos/borrarProductos?id=${id}`);
+  }
+  getDesbloquear(id:any){
+    return this.http.get(`${environment.baseUrl}Productos/getDesbloquear?id=${id}`);
   }
   getBorrarProductoEnOtroSitio(id:any){
     return this.http.get(`${environment.baseUrl}Productos/getBorrarProductoEnOtroSitio?id=${id}`);

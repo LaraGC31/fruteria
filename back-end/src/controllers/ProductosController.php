@@ -55,6 +55,18 @@ class ProductosController{
         header('Content-Type: application/json');
         echo json_encode($productosModel->getProductosByVerdura());
     }
+    public function getProductosByFrutaBloqueados() {
+        $productosModel = new ProductosModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($productosModel->getProductosByFrutaBloqueados());
+    }
+    public function getProductosByVerduraBloqueados() {
+        $productosModel = new ProductosModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($productosModel->getProductosByVerduraBloqueados());
+    }
     public function getProductos() {
         $productosModel = new ProductosModel();
 
@@ -66,7 +78,14 @@ class ProductosController{
         $productosModel = new ProductosModel();
 
         header('Content-Type: application/json');
-        echo json_encode($productosModel->borrarProductos($productos));
+        echo json_encode($productosModel->getBloquear($productos));
+    }
+    public function getDesbloquear() {
+        $productos = $_GET["id"]??"";
+        $productosModel = new ProductosModel();
+
+        header('Content-Type: application/json');
+        echo json_encode($productosModel->getDesbloquear($productos));
     }
     public function getBorrarProductoEnOtroSitio(){
         $id = $_GET["id"]??"";

@@ -44,7 +44,7 @@ class ProductosModel extends Model{
     public function getProductosByFruta(){
         try {
         
-            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'fruta'";
+            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'fruta' and e.stock = 1";
             $sentencia = $this->conn->prepare($consulta);
             $sentencia->setFetchMode(\PDO::FETCH_OBJ);
             $sentencia->execute();
@@ -60,7 +60,40 @@ class ProductosModel extends Model{
     public function getProductosByVerdura(){
         try {
         
-            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'verdura'";
+            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'verdura' and e.stock = 1 ";
+            $sentencia = $this->conn->prepare($consulta);
+            
+            $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+            $sentencia->execute();
+          
+            $resultado = $sentencia->fetchAll();
+            return $resultado;
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
+    public function getProductosByFrutaBloqueados(){
+        try {
+        
+            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'fruta' and e.stock = 0";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->setFetchMode(\PDO::FETCH_OBJ);
+            $sentencia->execute();
+          
+            $resultado = $sentencia->fetchAll();
+            return $resultado;
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
+    public function getProductosByVerduraBloqueados(){
+        try {
+        
+            $consulta = "select e.* from productos e join categorias i on e.idCategoria = i.id where i.nombre = 'verdura' and e.stock = 0 ";
             $sentencia = $this->conn->prepare($consulta);
             
             $sentencia->setFetchMode(\PDO::FETCH_OBJ);
@@ -79,9 +112,8 @@ class ProductosModel extends Model{
         
             $consulta = "SELECT p.id AS producto_id
 FROM productos p
-LEFT JOIN detallepedido d ON p.id = d.idProducto
 LEFT JOIN carrito c ON p.id = c.idProducto
-WHERE p.id = :id AND (d.idProducto IS NOT NULL OR c.idProducto IS NOT NULL)
+WHERE p.id = :id AND c.idProducto IS NOT NULL
 ";
             $sentencia = $this->conn->prepare($consulta);
             $sentencia->bindParam(':id', $id);
@@ -113,10 +145,25 @@ WHERE p.id = :id AND (d.idProducto IS NOT NULL OR c.idProducto IS NOT NULL)
 
         }
     }
-    public function borrarProductos($id){
+    public function getBloquear($id){
         try {
         
-            $consulta = "delete from productos where id = :id";
+            $consulta = "update productos set stock = 0 where id = :id";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':id', $id);
+
+
+            return $sentencia->execute();
+        } catch (\PDOException $e) {
+            echo '<p>Fallo en la conexion:' . $e->getMessage() . '</p>';
+            return NULL;
+
+        }
+    }
+    public function getDesbloquear($id){
+        try {
+        
+            $consulta = "update productos set stock = 1 where id = :id";
             $sentencia = $this->conn->prepare($consulta);
             $sentencia->bindParam(':id', $id);
 
