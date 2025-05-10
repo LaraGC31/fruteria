@@ -1,0 +1,93 @@
+#general{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 2vh;
+background-color: #f5fff5;
+}
+#coleccion{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(22vh,1fr));
+    gap: 15vh;
+    width: 100%;
+    max-width: 90vh;
+    justify-items: center;
+    margin-top: 2vh;
+}
+.card{
+    background-color: linear-gradient(135deg,#e0ffe0,#d0f0ff);
+    width: 55vw;
+  min-height: 55vh;
+  padding: 1vh;
+  border-radius: 1.5vh;
+  box-shadow: 0 0.6vh 1.2vh rgba(0,0,0,0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+  position: relative;
+}
+.card:hover {
+    transform: translateY(-1vh);
+    box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.15);
+  }
+  
+  .card img {
+    width: 30vw;
+    height: 30vw;
+    object-fit: cover;
+    border-radius: 1.2vh;
+    margin: 0 auto;
+    border: 0.2vh solid #fff;
+    transition: transform 0.3s;
+  }
+  .card img:hover {
+    transform: scale(1.1); 
+  }
+  .card h3 {
+    
+    color: #2c3e50;
+    font-size: 3vw;
+    font-weight: 600;
+  }
+  
+  .precio {
+    font-weight: bold;
+    color: #27ae60;
+    font-size: 3vw;
+  }
+  
+  .descripcion {
+    font-size: 3vw;
+    color: #555;
+    
+    text-align: center;
+  }
+  .btn-carrito {
+    background-color: #ffbd59;
+    color: #fff;
+    border: none;
+    padding: 1vh 2vw;
+    border-radius: 1vh;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 2vh;
+  }
+  
+  .btn-carrito:hover {
+    background-color: #ffa500;
+    transform: scale(1.05);
+  }
+ #mensaje-vacio{
+height: 60vh;
+width: 100%; 
+}
+#mensaje-vacio h1{
+  font-size: 3vh;
+
+}

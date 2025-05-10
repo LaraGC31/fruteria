@@ -19,6 +19,8 @@ import { MDatosUsuariosComponent } from "./mobile-component/m-datos-usuarios/m-d
 import { MVerduraComponent } from './mobile-component/m-verdura/m-verdura.component';
 import { VerBloqueadosFrutaComponent } from './ver-bloqueados-fruta/ver-bloqueados-fruta.component';
 import { VerBloqueadosVerduraComponent } from './ver-bloqueados-verdura/ver-bloqueados-verdura.component';
+import { MVerBloqueadosFrutaComponent } from './mobile-component/m-ver-bloqueados-fruta/m-ver-bloqueados-fruta.component';
+import { MVerBloqueadosVerduraComponent } from './mobile-component/m-ver-bloqueados-verdura/m-ver-bloqueados-verdura.component';
 
 export const routes: Routes = [
 
@@ -42,6 +44,8 @@ export const routes: Routes = [
 {path:"m-aniadirFV", component: MFormularioFrutasVerdurasComponent},  
 {path:"m-datos-usuarios", component: MDatosUsuariosComponent},  
 {path:"verBloqueadosfruta", component: VerBloqueadosFrutaComponent},  
-{path:"verBloqueadosverdura", component: VerBloqueadosVerduraComponent}  
+{path:"verBloqueadosverdura", component: VerBloqueadosVerduraComponent},  
+{path:"mverBloqueadosfruta", component: MVerBloqueadosFrutaComponent},  
+{path:"mverBloqueadosverdura", component: MVerBloqueadosVerduraComponent}  
 
 ];

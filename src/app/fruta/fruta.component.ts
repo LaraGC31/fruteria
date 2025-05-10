@@ -82,25 +82,12 @@ data:any = '';
     
         })
       }else{
-        alert("No se puede");
+        alert("No se puede ya que el producto esta en el carrito");
       }
     })
    
   }
-   aniadirProducto(id:any){
-    this.productosService.getBorrarProductoEnOtroSitio(id).subscribe((data:any)=>{
-      if(data.puedeEliminar){
-        this.productosService.borrarProductos(id).subscribe(data=>{
-      
-          window.location.reload();
-    
-        })
-      }else{
-        alert("No se puede");
-      }
-    })
-   
-  }
+  
   verBloqueadosFruta(){
         this.router.navigate(['/verBloqueadosfruta']); 
 

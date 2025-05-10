@@ -82,7 +82,7 @@ export class VerduraComponent  implements OnInit {
     
         })
       }else{
-        alert("No se puede");
+        alert("No se puede ya que el producto esta en el carrito");
       }
     })
    

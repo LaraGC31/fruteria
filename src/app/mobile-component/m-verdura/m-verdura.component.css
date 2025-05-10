@@ -84,10 +84,14 @@ background-color: #f5fff5;
     transform: scale(1.05);
   }
   #abajo {
-    margin-top: 2vh;
+display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5vw;
+    margin-top: 4vh;
   }
   
-  #aniadir {
+  #aniadir , #mverBloqueadosVerdura{
     background-color: #ff8c42;
     color: white;
     padding: 1.5vh 3vw;

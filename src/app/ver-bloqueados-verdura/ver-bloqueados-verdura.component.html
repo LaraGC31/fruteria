@@ -1,7 +1,13 @@
+@if(usuarioRol == "A"){
 <div id="general">
-    <div id="coleccion">
-        @for(data of data; track data.id){
-              @if(data != ""){ 
+@if(data == ""){
+    <div id="mensaje-vacio" ><h1>No hay productos bloqueados</h1></div>
+}
+   
+        @if(data != ""){
+             <div id="coleccion">
+        @for(data of data; track data.id){ 
+            
             <div class="card"> 
                 <img [src]="'http://localhost/proyecto/back-end/assets/uploads/' + data.foto"alt="foto">
                 <h3>{{data.nombre.toUpperCase()}}</h3>
@@ -10,9 +16,9 @@
                 @if(usuarioId != null && usuarioEmail != ""){
                         <button class="btn-carrito" (click)="desbloquearProductoVerdura(data.id)">Desbloquear Producto</button>
                 }
-            </div>
-        }@else {
-            <h1>No ha nada bloqueado</h1>
+                 </div>
         }
-            }
-    </div>
+</div>
+        }
+</div>
+}

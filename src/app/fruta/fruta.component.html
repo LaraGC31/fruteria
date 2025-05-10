@@ -2,7 +2,7 @@
 <div id="coleccion">
    
     @for(data of data; track data.id){
-        @if(data.stock == 1){  
+   
         <div class="card">
         <img [src]="'http://localhost/proyecto/back-end/assets/uploads/' + data.foto"alt="foto">
         <h3>{{data.nombre.toUpperCase()}}</h3>
@@ -16,7 +16,7 @@
             }
         }
     </div>
-}       
+ 
  }
   
 </div>

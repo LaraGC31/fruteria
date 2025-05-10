@@ -84,3 +84,15 @@ background-color: #f5fff5;
     transform: scale(1.05);
   }
  
+#mensaje-vacio{
+display: flex;
+align-items: center;
+justify-content: center;
+height: 80vh;
+width: 100%;  
+}
+#mensaje-vacio h1{
+  font-size: 4vh;
+  text-align: center;
+   font-weight: bold;
+}

@@ -10,7 +10,7 @@
                     @if(usuarioRol != 'A'){
                         <button class="btn-carrito" (click)="aniadirCarrito(usuarioId,data.id,data.precio)">Añadir al carrito</button>
                     }@else {
-                        <button class="btn-carrito" (click)="borrarProductos(data.id)">Borrar</button>
+                        <button class="btn-carrito" (click)="borrarProductos(data.id)">Bloquear Producto</button>
                     }
                 }
             </div>
@@ -20,6 +20,8 @@
             @if(usuarioRol == 'A'){
         <div id="abajo">
             <button id="aniadir" (click)="aniadirFV()">Añadir Frutas y Verduras</button>
+        <button id="mverBloqueadosVerdura" (click)="mverBloqueadosVerdura()">Ver bloqueados de Verdura</button>
+
         </div>
     }
         }

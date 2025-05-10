@@ -89,4 +89,22 @@ export class MFrutaComponent implements OnInit {
     })
    
   }
+   aniadirProducto(id:any){
+    this.productosService.getBorrarProductoEnOtroSitio(id).subscribe((data:any)=>{
+      if(data.puedeEliminar){
+        this.productosService.borrarProductos(id).subscribe(data=>{
+      
+          window.location.reload();
+    
+        })
+      }else{
+        alert("No se puede ya que el producto esta en el carrito");
+      }
+    })
+   
+  }
+  mverBloqueadosFruta(){
+        this.router.navigate(['/mverBloqueadosfruta']); 
+
+  }
 }

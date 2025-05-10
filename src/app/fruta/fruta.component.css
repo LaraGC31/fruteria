@@ -30,26 +30,13 @@ background-color: #f5fff5;
   transition: transform 0.3s, box-shadow 0.3s ease-in-out;
   position: relative;
 }
-.cardOscura{
-    background-color: rgb(227, 224, 224);
-    width: 22vw;
-  min-height: 55vh;
-  padding: 1vh;
-  border-radius: 1.5vh;
-  box-shadow: 0 0.6vh 1.2vh rgba(0,0,0,0.1);
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: transform 0.3s, box-shadow 0.3s ease-in-out;
-  position: relative;
-}
+
 .card:hover {
     transform: translateY(-1vh);
     box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.15);
   }
   
-  .card img, .cardOscura img {
+  .card img{
     width: 12vw;
     height: 12vw;
     object-fit: cover;
