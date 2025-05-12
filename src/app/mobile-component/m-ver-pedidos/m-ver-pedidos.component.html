@@ -2,10 +2,17 @@
     <div id="cambioEstado">
         <h2>Cambiar estado</h2>
         <form (ngSubmit)="onSubmit()">
-            <label for="id">Número de usuario:</label>
-            <input type="text" id="id" name="id" [(ngModel)]="evento" readonly="readonly">
-            <label for="estado">Estado:</label>
-            <select name="estado" id="estado" [(ngModel)]="estadoNuevo" (ngModelChange)="cambiarSelectEstado($event)">
+            <p>
+             <label for="id">Número de usuario:</label>
+            </p>
+           <p>
+ <input type="text" id="id" name="id" [(ngModel)]="evento" readonly="readonly">
+           </p>
+           <p>
+ <label for="estado">Estado:</label>
+           </p>
+           <p>
+ <select name="estado" id="estado" [(ngModel)]="estadoNuevo" (ngModelChange)="cambiarSelectEstado($event)">
              @if(estadoActual === "pendiente"){
                 <option value="en fabricacion">En Fabricacion</option>
              }@else if(estadoActual === "en fabricacion"){
@@ -14,6 +21,7 @@
                 <option value="finalizado y entregado">Finalizado y Entregado</option>
              }
             </select>
+           </p>
             @if(botonCambioEstado){
                 @if(estadoNuevo === "" || typeof estadoNuevo == 'undefined'){
                 <p id="error">No se ha podido seleccionar</p>

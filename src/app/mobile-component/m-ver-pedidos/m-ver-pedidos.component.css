@@ -40,3 +40,13 @@ img{
 .id{
     background-color: #4CAF50;
 }
+#cambioEstado{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+#botones{
+    width: 20vh;
+    height: 3vh;
+}
