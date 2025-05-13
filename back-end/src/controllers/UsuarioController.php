@@ -39,14 +39,10 @@ class UsuarioController{
 
     public function aniadirUsuario() {
         $nombre = $_GET["nombre"]??"";
-
         $buscar = ['%C3%A1', '%C3%A9', '%C3%AD', '%C3%B3', '%C3%BA', '%C3%81', '%C3%89', '%C3%8D', '%C3%93', '%C3%9A', '%C3%B1', '%C3%91'];
         $reemplazar = ['á', 'é', 'í', 'ó', 'ú', 'Á', 'É', 'Í', 'Ó', 'Ú', 'ñ', 'Ñ'];
         
-
         $nombreMod = str_replace($buscar, $reemplazar, $nombre);
-            
-       
         $rol = "CL";
         $email = $_GET["email"]??"";
         $password = $_GET["password"]??"";
@@ -59,17 +55,14 @@ class UsuarioController{
             "status" => false,
             "errores" => []
         ];
-        
         if (!Validaciones::validateName($_GET['nombre'])) $dataRegistro["errores"]['nombre'] = "Formato nombre no válido";
         
         if (!Validaciones::validateEmail($_GET['email'])) $dataRegistro["errores"]['email'] = "Formato email no válido";
         if (!Validaciones::validateFormatPassword($_GET['password'])) $dataRegistro["errores"]['password'] = "Formato contraseña no válido";
                 if (!Validaciones::validarCodigoPostal($_GET['codPostal'])) $dataRegistro["errores"]['codPostal'] = "Formato codPostal no válido";
                 if (!Validaciones::validateTelefono($_GET['telefono'])) $dataRegistro["errores"]['telefono'] = "Formato telefono no válido";
-
         if (empty($dataRegistro["errores"])) {
             $passwordSecure =  password_hash($password,PASSWORD_DEFAULT);
-
             $atributos = array(
                 $nombreMod,
                 $rol,
@@ -85,7 +78,6 @@ class UsuarioController{
 
             $dataRegistro["status"] = true;
         }
-       
         header('Content-Type: application/json');
         echo json_encode($dataRegistro); 
     }

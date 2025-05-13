@@ -9,40 +9,5 @@ import {ProductosService} from '../services/productos/productos.service';
   templateUrl: './inicio.component.html',
   styleUrl: './inicio.component.css'
 })
-export class InicioComponent implements OnInit  {
-data:any = '';
-
-  constructor(private router: Router,
-    private dataService: DataSignalService,
-    private productosService: ProductosService
-  ){}
-  ngOnInit(){
-    this.getProductos();
-    
-  }
-  login(){
-    this.router.navigate(['/login']); 
-  }
-  registro(){
-    this.router.navigate(['/registro']);
-  }
-  get usuarioEmail(): string{
-    return this.dataService.getEmail();
-  }
-  get usuarioId():number|null {
-    return this.dataService.getId();
-  }
-  get usuarioNombre(): string{
-    return this.dataService.getNombre();
-  }
-  get usuarioRol():string {
-    return this.dataService.getRol();
-  }
-  getProductos(){
-    this.productosService.getProductos().subscribe((data)=>{
-      this.data = data
-    })
-  }
-  
-
+export class InicioComponent  {
 }

@@ -18,16 +18,12 @@ nombre:string ='';
 rol:string ='';
 errores:string = '';
 usuario:any = {};
- 
 @Output() enviarUsuario = new EventEmitter<any>();
-
 constructor(
   private usuarioService: UsuarioService,   
   private dataSignalService: DataSignalService,
   private router: Router
 ){}
-
-  
 ngOnInit(): void {
   let id = localStorage.getItem("id");
   let email = localStorage.getItem("email");
@@ -40,7 +36,6 @@ ngOnInit(): void {
     this.password = password;
   }
 }
-
 onSubmit(): void {
   this.usuarioService.login(this.email, this.password).subscribe((data) => {
     if(data && data.id){
@@ -55,7 +50,6 @@ onSubmit(): void {
     }
   });
 }
-
 guardarUsuario(usuario: any) {
   if (this.email && this.password) {
     localStorage.setItem('id', usuario.id);
@@ -68,6 +62,5 @@ guardarUsuario(usuario: any) {
   this.dataSignalService.setEmail(this.email);
   this.dataSignalService.setNombre(this.nombre);
   this.dataSignalService.setRol(this.rol);
-
 }
 }

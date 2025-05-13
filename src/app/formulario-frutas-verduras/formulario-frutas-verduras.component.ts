@@ -53,14 +53,12 @@ data:any= '';
     if (this.selectedFile) {
       formData.append('foto', this.selectedFile);
     }
-
     formData.append('nombre', this.nombre);
     formData.append('idCategoria', this.idCategoria);
     formData.append('stock', this.stock);
     formData.append('descripcion', this.descripcion);
     formData.append('precio', this.precio);
     
-
     this.http
       .post(
         `${environment.baseUrl}Productos/aniadirProductos`,

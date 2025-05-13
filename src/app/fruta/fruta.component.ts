@@ -20,12 +20,9 @@ data:any = '';
 
   ){}
 
-
   ngOnInit(){
     this.getProductosByFrutas();
   }
-  
-
   
   get usuarioEmail(): string{
     return this.dataService.getEmail();

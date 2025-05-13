@@ -21,9 +21,7 @@ import { VerBloqueadosFrutaComponent } from './ver-bloqueados-fruta/ver-bloquead
 import { VerBloqueadosVerduraComponent } from './ver-bloqueados-verdura/ver-bloqueados-verdura.component';
 import { MVerBloqueadosFrutaComponent } from './mobile-component/m-ver-bloqueados-fruta/m-ver-bloqueados-fruta.component';
 import { MVerBloqueadosVerduraComponent } from './mobile-component/m-ver-bloqueados-verdura/m-ver-bloqueados-verdura.component';
-
 export const routes: Routes = [
-
 {path:"verdura", component:VerduraComponent},    
 {path:"fruta", component:FrutaComponent},   
 {path:"inicio", component:InicioComponent},    
@@ -46,6 +44,5 @@ export const routes: Routes = [
 {path:"verBloqueadosfruta", component: VerBloqueadosFrutaComponent},  
 {path:"verBloqueadosverdura", component: VerBloqueadosVerduraComponent},  
 {path:"mverBloqueadosfruta", component: MVerBloqueadosFrutaComponent},  
-{path:"mverBloqueadosverdura", component: MVerBloqueadosVerduraComponent}  
-
+{path:"mverBloqueadosverdura", component: MVerBloqueadosVerduraComponent}
 ];
