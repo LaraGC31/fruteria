@@ -88,7 +88,8 @@ getObtenerDelUsuario(){
      pdf.text(`CODIGO POSTAL: ${datos.codPostal}`, 10, (position += 10));
      pdf.text(`TELEFONO: ${datos.telefono}`, 10, (position += 10));
   
-   
+       pdf.addPage();
+       position = 10;
      const nombres = datos.productos.split(',');
      const cantidades = datos.cantidades.split(',');
      const precios = datos.precios.split(',');
@@ -99,7 +100,7 @@ getObtenerDelUsuario(){
        const precio = precios[i] ? precios[i].trim() : '0';
    
        pdf.text(`NOMBRE DE LA FRUTA O VERDURA: ${nombre.toUpperCase()}`, 10, (position += 10));
-       pdf.text(`CANTIDAD: ${cantidad}`, 10, (position += 10));
+       pdf.text(`CANTIDAD: ${cantidad} KG`, 10, (position += 10));
        pdf.text(`PRECIO: ${precio} €`, 10, (position += 10));
      }
      pdf.text(`EN CASO DEL PRECIO NO CUADRAR ES QUE FALTAN LOS 2€`, 10, (position += 10));

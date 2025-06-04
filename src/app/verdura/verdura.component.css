@@ -7,22 +7,26 @@
     padding: 2vh;
 background-color: #f5fff5;
 }
-#coleccion{
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(22vh,1fr));
-    gap: 15vh;
-    width: 100%;
-    max-width: 90vh;
-    justify-items: center;
-    margin-top: 2vh;
+#coleccion {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4vh;
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 2vh;
+  padding: 0 2vw;
 }
-.card{
-    background-color: linear-gradient(135deg,#e0ffe0,#d0f0ff);
-    width: 22vw;
+
+.card {
+  background-color: linear-gradient(135deg, #e0ffe0, #d0f0ff);
+  width: 22vw;
+  min-width: 200px;
+  max-width: 260px;
   min-height: 55vh;
   padding: 1vh;
   border-radius: 1.5vh;
-  box-shadow: 0 0.6vh 1.2vh rgba(0,0,0,0.1);
+  box-shadow: 0 0.6vh 1.2vh rgba(0, 0, 0, 0.1);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -30,42 +34,44 @@ background-color: #f5fff5;
   transition: transform 0.3s, box-shadow 0.3s ease-in-out;
   position: relative;
 }
+
 .card:hover {
     transform: translateY(-1vh);
     box-shadow: 0 0.8vh 1.6vh rgba(0, 0, 0, 0.15);
   }
   
-  .card img {
-    width: 12vw;
-    height: 12vw;
-    object-fit: cover;
-    border-radius: 1.2vh;
-    margin: 0 auto;
-    border: 0.2vh solid #fff;
-    transition: transform 0.3s;
-  }
+
   .card img:hover {
     transform: scale(1.1); 
   }
-  .card h3 {
-    margin: 1vh 0 ;
-    color: #2c3e50;
-    font-size: 2vw;
-    font-weight: 600;
-  }
-  
-  .precio {
-    font-weight: bold;
-    color: #27ae60;
-    font-size: 2vw;
-  }
-  
-  .descripcion {
-    font-size: 1.5vw;
-    color: #555;
-    margin-bottom: 1vh;
-    text-align: center;
-  }
+  .card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1.2vh;
+  border: 0.2vh solid #fff;
+  transition: transform 0.3s;
+}
+
+.card h3 {
+  margin: 1vh 0;
+  color: #2c3e50;
+  font-size: 1.8vw;
+  font-weight: 600;
+}
+
+.precio {
+  font-weight: bold;
+  color: #27ae60;
+  font-size: 1.6vw;
+}
+
+.descripcion {
+  font-size: 1.3vw;
+  color: #555;
+  margin-bottom: 1vh;
+}
+
   .btn-carrito {
     background-color: #ffbd59;
     color: #fff;
@@ -88,7 +94,6 @@ background-color: #f5fff5;
     justify-content: center;
     gap: 5vw;
     margin-top: 4vh;
-  
   }
   
   #aniadir, #verBloqueadosVerdura {
