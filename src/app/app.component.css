@@ -52,6 +52,7 @@ border-bottom-left-radius: 2vh;
 }
 #usuarioNombre, #usuarioNombreM{
   font-size: 2vh;
+  text-align: center;
 }
 
 /*MODO MOVIL*/
@@ -114,4 +115,21 @@ margin-left: 2vh;
   font-size: 2rem;
   align-items: center;
   justify-content: center;
+}
+
+#imagen img{
+ width: 5vh;
+ height: 5vh;
+ border-radius: 50%;
+  margin-left: 5vh ;
+
+}
+#imagenM img{
+ width: 5vh;
+ height: 5vh;
+ border-radius: 50%;
+ margin-left: 5vh ;
+}
+#carrito{
+  margin-top: 2vh;
 }

@@ -12,19 +12,27 @@ export class MRegistroComponent {
   email: string = '';
   password: string = '';
   telefono: string = '';
- 
+ avatar:string = '';
  direccion: string = '';
  codPostal: string = '';
  provincia:string = '';
  dataRegistro: any = '';
 botonAniadir:boolean = false;
-
+avatarList = [
+  '../../assets/avatar1.avif',
+  '../../assets/avatar2.jpg',
+  '../../assets/avatar3.jpg',
+  '../../assets/avatar4.webp',
+  '../../assets/avatar5.webp',
+  '../../assets/avatar6.jpg'
+];
+avatarSeleccionado:any = '';
   constructor(private usuarioService: UsuarioService) {}
 
-  onSubmit(): void {
+   onSubmit(): void {
     this.botonAniadir = true;
     if((this.nombre === '' || typeof this.nombre == 'undefined') || 
-    (this.email === '' || typeof this.email == 'undefined')|| (this.password === '' || typeof this.password == 'undefined') || (this.telefono === '' || typeof this.telefono == 'undefined') || (this.direccion === '' || typeof this.direccion == 'undefined') || (this.provincia === '' || typeof this.provincia == 'undefined') || (this.codPostal === '' || typeof this.codPostal == 'undefined') ){
+    (this.email === '' || typeof this.email == 'undefined')|| (this.password === '' || typeof this.password == 'undefined') || (this.telefono === '' || typeof this.telefono == 'undefined') || (this.direccion === '' || typeof this.direccion == 'undefined') || (this.provincia === '' || typeof this.provincia == 'undefined') || (this.codPostal === '' || typeof this.codPostal == 'undefined') ||  (this.avatarSeleccionado === '' || typeof this.avatarSeleccionado == 'undefined')  ){
     }else{
     this.usuarioService
       .registrarUsuario(
@@ -34,7 +42,8 @@ botonAniadir:boolean = false;
         this.provincia,
         this.direccion,
         this.codPostal,
-        this.telefono
+        this.telefono,
+        this.avatarSeleccionado
       )
       .subscribe((dataRegistro) => {
         this.dataRegistro = dataRegistro;     
@@ -46,6 +55,7 @@ botonAniadir:boolean = false;
         this.direccion = '';
         this.codPostal = '';
         this.telefono = '';
+        this.avatarSeleccionado = '';
         this.botonAniadir = false;
         }
       });

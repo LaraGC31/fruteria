@@ -91,7 +91,7 @@ display: flex;
     margin-top: 4vh;
   }
   
-  #aniadir , #mverBloqueadosVerdura{
+  #aniadir , #mverBloqueadosVerdura, #mmodificarVerdura{
     background-color: #ff8c42;
     color: white;
     padding: 1.5vh 3vw;

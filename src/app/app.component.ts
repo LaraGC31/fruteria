@@ -13,7 +13,7 @@ import { RouterLink } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'fruteria';
-  usuario: any = {id: null, nombre: "", email: "", rol: ""};
+  usuario: any = {id: null, nombre: "", email: "", rol: "", avatar: ""};
 
   
   mostrarSidebar: boolean = true;
@@ -47,11 +47,15 @@ export class AppComponent implements OnInit {
   get usuarioRol():string {
     return this.dataService.getRol();
   }
+   get usuarioAvatar():string {
+    return this.dataService.getAvatar();
+  }
   cargarUsuario() :void{
     let id = localStorage.getItem("id");
     let nombre = localStorage.getItem("nombreApellidos");
     let email = localStorage.getItem("email");
     let rol = localStorage.getItem("rol");
+    let avatar = localStorage.getItem("avatar");
 
   
 
@@ -59,11 +63,13 @@ export class AppComponent implements OnInit {
       && nombre != 'undefined' && nombre != null
       && id != 'undefined' && id != null
       && rol != 'undefined' && rol != null
+      && avatar != 'undefined' && avatar != null
     ) {
       this.usuario.id = id;
       this.usuario.nombre = nombre;
       this.usuario.email = email;
       this.usuario.rol = rol;
+      this.usuario.avatar = avatar;
       this.sendUsuario();
       
   }
@@ -74,6 +80,7 @@ export class AppComponent implements OnInit {
     localStorage.setItem("nombreApellidos", usuario.nombre);
     localStorage.setItem("email", usuario.email);
     localStorage.setItem("rol", usuario.rol);
+    localStorage.setItem("avatar", usuario.avatar);
     
     this.sendUsuario();
   }
@@ -99,6 +106,7 @@ export class AppComponent implements OnInit {
     this.dataService.setEmail(this.usuario.email);
     this.dataService.setRol(this.usuario.rol);
     this.dataService.setNombre(this.usuario.nombre);
+    this.dataService.setAvatar(this.usuario.avatar);
   }
   registro() {
     this.router.navigate(['/registro']);
@@ -106,6 +114,14 @@ export class AppComponent implements OnInit {
   }
   login() {
     this.router.navigate(['/login']); 
+  
+  }
+  registroM() {
+    this.router.navigate(['/m-registro']);
+  
+  }
+  loginM() {
+    this.router.navigate(['/m-login']); 
   
   }
   cerrarSesion():void {

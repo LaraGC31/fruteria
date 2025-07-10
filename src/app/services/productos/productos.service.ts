@@ -27,6 +27,17 @@ export class ProductosService {
   getProductosByFruta(){
     return this.http.get(`${environment.baseUrl}Productos/getProductosByFruta`);
   }
+  getNombreProductosFruta(){
+    return this.http.get(`${environment.baseUrl}Productos/getNombreProductosFruta`);
+  }
+  getNombreProductosVerdura(){
+    return this.http.get(`${environment.baseUrl}Productos/getNombreProductosVerdura`);
+  }
+  
+  getObtenerProductosByNombre(nombre:any){
+    return this.http.get(`${environment.baseUrl}Productos/getObtenerProductosByNombre?nombre=${nombre}`);
+  }
+
   getProductosByVerdura(){
     return this.http.get(`${environment.baseUrl}Productos/getProductosByVerdura`);
   }
@@ -47,6 +58,10 @@ export class ProductosService {
   }
   getBorrarProductoEnOtroSitio(id:any){
     return this.http.get(`${environment.baseUrl}Productos/getBorrarProductoEnOtroSitio?id=${id}`);
+
+  }
+  getModificarProductos(id:any, nombre:any, descripcion:any, precio:any) : Observable<any>{
+        return this.http.get(`${environment.baseUrl}Productos/getModificarProductos?id=${id}&nombre=${nombre}&descripcion=${descripcion}&precio=${precio}`);
 
   }
 }

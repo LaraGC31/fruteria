@@ -23,10 +23,11 @@ export class UsuarioService {
     direccion:string,
     codPostal:string,
     telefono:string,
+    avatar:string
 
   ): Observable<any> {
     return this.http.get(
-      `${environment.baseUrl}Usuario/aniadirUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}`
+      `${environment.baseUrl}Usuario/aniadirUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}&avatar=${avatar}`
     );
   }
   datosUsuarios(id:any){
@@ -42,10 +43,13 @@ export class UsuarioService {
   direccion:string, 
   codPostal:string,
   telefono:string,
-  id:any
+  id:any,
+  avatar:any,
+  avatarActual:any
   ){
     return this.http.get(
-      `${environment.baseUrl}Usuario/modificarUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}&id=${id}`
+      `${environment.baseUrl}Usuario/modificarUsuario?nombre=${nombre}&email=${email}&password=${password}&provincia=${provincia}&direccion=${direccion}&codPostal=${codPostal}&telefono=${telefono}&id=${id}&avatar=${avatar}&avatarActual=${avatarActual}`
     );
+
   }
 }

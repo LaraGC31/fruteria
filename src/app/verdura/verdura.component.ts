@@ -90,4 +90,7 @@ export class VerduraComponent  implements OnInit {
   verBloqueadosVerdura(){
      this.router.navigate(['/verBloqueadosverdura']); 
   }
+  modificarVerdura(){
+     this.router.navigate(['/modificarVerdura']); 
+  }
 }

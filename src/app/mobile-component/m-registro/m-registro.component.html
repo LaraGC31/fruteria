@@ -1,4 +1,4 @@
-<div id="general">
+<div id="generalM">
     <form (ngSubmit)="onSubmit()">
         <div class="input-container">
             <label for="nombre">NOMBRE Y APELLIDOS</label>
@@ -86,6 +86,24 @@
             @if(botonAniadir){
                 @if(provincia === "" || typeof provincia == 'undefined'){
                 <p id="errores">No se ha podido seleccionar</p>
+                }
+                }
+        </div>
+         <div class="input-container2">
+             <h5>AVATARES</h5>
+               <div class="avatar-row">
+                @for(avatar of avatarList; track avatar){
+                          <label class="avatar-option">
+                 <input type="radio" name="avatar" [value]="avatar" [(ngModel)]="avatarSeleccionado">
+                 <img [src]="avatar" alt="avatar" [class.selected]="avatarSeleccionado === avatar">
+                         </label>
+                }
+        </div>
+        </div>
+        <div id="formErrors">
+            @if(botonAniadir){
+                @if(avatarSeleccionado === "" || typeof avatarSeleccionado == 'undefined'){
+                <p id="errores">No se ha seleccionado</p>
                 }
                 }
         </div>

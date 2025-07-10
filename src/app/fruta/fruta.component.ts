@@ -89,4 +89,8 @@ data:any = '';
         this.router.navigate(['/verBloqueadosfruta']); 
 
   }
+  modificarFruta(){
+        this.router.navigate(['/modificarFruta']); 
+
+  }
 }

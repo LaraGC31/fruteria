@@ -1,11 +1,11 @@
-#general{
+#generalM{
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
     width: 100%;
     background-color: #f5fff5;
-    margin-top: 5vh;
+    margin-top: 20vh;
 }
 form {
   background-color: #ffffff;
@@ -93,3 +93,42 @@ select {
   height: 3vh;
 
 }
+.input-container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.input-container2 h5 {
+  font-size: 2.2vh;
+  margin-bottom: 1vh;
+  margin-left: 1vh;
+}
+
+.avatar-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5vh;
+  flex-wrap: wrap; 
+}
+
+.avatar-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.avatar-option img {
+  width: 8vh;
+  height: 8vh;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  transition: border 0.3s;
+}
+
+.avatar-option img.selected {
+  border-color: green;
+}
+

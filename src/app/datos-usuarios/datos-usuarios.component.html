@@ -1,4 +1,7 @@
 <div id="general">
+    <div id="fotoperfil">
+                                <img [src]="'http://localhost/proyecto/back-end/assets/avatar/' + usuarioAvatar" alt="foto" (click)="datosUsuarios()">
+    </div>
  <form (ngSubmit)="onSubmit()">
      <p  class="input-container">
             <label for="nombreApellidos">Nombre y Apellidos:</label>
@@ -28,12 +31,29 @@
             <label for="codPostal">Codigo Postal:</label>
             <input type="text" id="codPostal" name="codPostal" [(ngModel)]="data.codPostal"> 
         </p>
+        <input type="hidden" name="avatarActual" [value]="data.avatar">
+        <div class="input-container2">
+             <h5>AVATARES*</h5>
+               <div class="avatar-row">
+                @for(avatar of avatarList; track avatar){
+                          <label class="avatar-option">
+                 <input type="radio" name="avatar" [value]="avatar" [(ngModel)]="avatarSeleccionado">
+                 <img [src]="avatar" alt="avatar" [class.selected]="avatarSeleccionado === avatar">
+                         </label>
+                }
+        </div>
+        </div>
         <p class="input-container">
              *La contraseña no se muestra nunca por privacidad en caso de querer cambiarla solo tienes que completar el cuadro quue aparece en blanco.
+             
+        </p>
+        <p class="input-container">
+            *Los avatares no  se muestra cual esta en el perfil del usuario, esta en blanco en caso de querer cambiarlo solo tienes pulsar el nuevo y se guardara si no lo completas quedara el que tendrias antes.
         </p>
         <input type="submit" id="guardar" value="Guardar datos">
     
     </form>
+    @if(usuarioRol != 'A'){
     <div id="pedidosrealizados">
         @if(datos != ''){
         @for( datos of datos; track datos.id){
@@ -50,6 +70,7 @@
         }@else{
             <h1>No has realizado ningún pedido ahora</h1>
         }
-    
     </div>
+}
 </div>
+    

@@ -1,0 +1,38 @@
+<div id="general">
+    <div id="formulario">
+        <div id="arriba">
+         <select name="categorias" id="categoria" [(ngModel)]="tipo"  (change)="getObtenerProductosByNombre()">
+        @for(data of data; track data.nombre){  
+            <option value="{{data.nombre}}">{{data.nombre.toUpperCase()}}</option>
+            }
+    </select>
+    </div>
+    <div id="completado">
+   <form (ngSubmit)="onSubmit()"  >
+  
+<div class="input-container">
+
+<label for="nombre">NOMBRE</label>
+    <input type="text" [(ngModel)]="data2.nombre" name="nombre" id="nombre">
+    
+</div>
+
+<div class="input-container">
+    <label for="descripcion">DESCRIPCION</label>
+    <textarea name="descripcion" [(ngModel)]="data2.descripcion" id="descripcion"></textarea>
+    
+</div>
+<div class="input-container">
+<label for="precio">PRECIO</label>
+    <input type="text" [(ngModel)]="data2.precio" id="precio" name="precio">
+
+</div>
+<p>En caso de no marcar nada en Stock , seguira con el mismo valor por defecto que tenia antes.</p>
+<input type="submit" value="Añadir producto" id="btnAniadir" >
+    
+
+</form>
+
+</div>
+
+</div>

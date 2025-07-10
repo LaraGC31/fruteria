@@ -107,4 +107,8 @@ export class MFrutaComponent implements OnInit {
         this.router.navigate(['/mverBloqueadosfruta']); 
 
   }
+  mmodificarFruta(){
+        this.router.navigate(['/mmodificarFruta']); 
+
+  }
 }

@@ -43,9 +43,10 @@ class UsuarioModel extends Model{
         $direccion = $atributos[5];
         $codPostal = $atributos[6];
         $telefono = $atributos[7];
+        $avatar = $atributos[8];
         try {
-            $consulta = "insert into usuarios(nombreApellidos, rol, email, password, provincia, direccion,codPostal, telefono)
-                        values (:nombre,:rol, :email, :password,:provincia,:direccion,:codPostal,:telefono)";
+            $consulta = "insert into usuarios(nombreApellidos, rol, email, password, provincia, direccion,codPostal, telefono,avatar )
+                        values (:nombre,:rol, :email, :password,:provincia,:direccion,:codPostal,:telefono,:avatar)";
 
             $sentencia = $this->conn->prepare($consulta);
             $sentencia->bindParam(':nombre', $nombre);
@@ -58,7 +59,7 @@ class UsuarioModel extends Model{
             (':codPostal', $codPostal);
             $sentencia->bindParam
             (':telefono', $telefono);
-        
+            $sentencia->bindParam(':avatar', $avatar);
 
             return $sentencia->execute();
 
@@ -69,39 +70,66 @@ class UsuarioModel extends Model{
         }  
 
     }
-    public function modificarUsuario($nombre, $email, $password, $provincia, $direccion,$codPostal,$telefono, $id){
+    public function modificarUsuario($nombre, $email, $password, $provincia, $direccion,$codPostal,$telefono, $id, $avatar){
         try{
-            if($password == ''){
-            $consulta ="update usuarios set nombreApellidos = :nombre, email = :email, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono where id = :id";
-
+           if ($password == '' && $avatar == '') {
+            $consulta = "UPDATE usuarios SET nombreApellidos = :nombre, email = :email, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono WHERE id = :id";
             $sentencia = $this->conn->prepare($consulta);
-            $sentencia->bindParam(':id', $id);
             $sentencia->bindParam(':nombre', $nombre);
             $sentencia->bindParam(':email', $email);
             $sentencia->bindParam(':provincia', $provincia);
             $sentencia->bindParam(':direccion', $direccion);
             $sentencia->bindParam(':codPostal', $codPostal);
             $sentencia->bindParam(':telefono', $telefono);
+            $sentencia->bindParam(':id', $id);
+        }
 
-
-            return $sentencia->execute();
-            }else{
-                $consulta ="update usuarios set nombreApellidos = :nombre, email = :email, password = :password, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono where id = :id";
-
-                $sentencia = $this->conn->prepare($consulta);
-                $sentencia->bindParam(':id', $id);
-                $sentencia->bindParam(':nombre', $nombre);
-                $sentencia->bindParam(':email', $email);
-                $sentencia->bindParam(':password', $password);
-                $sentencia->bindParam(':provincia', $provincia);
+        // 2. Con password, sin avatar
+        else if ($password != '' && $avatar == '') {
+            $consulta = "UPDATE usuarios SET nombreApellidos = :nombre, email = :email, password = :password, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono WHERE id = :id";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':nombre', $nombre);
+            $sentencia->bindParam(':email', $email);
+            $sentencia->bindParam(':password', $password);
+            $sentencia->bindParam(':provincia', $provincia);
             $sentencia->bindParam(':direccion', $direccion);
             $sentencia->bindParam(':codPostal', $codPostal);
             $sentencia->bindParam(':telefono', $telefono);
-    
-              return  $sentencia->execute();
-            }
-        } catch(\PDOException $e){
-            return NULL;
+            $sentencia->bindParam(':id', $id);
         }
+
+        // 3. Sin password, con avatar
+        else if ($password == '' && $avatar != '') {
+            $consulta = "UPDATE usuarios SET nombreApellidos = :nombre, email = :email, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono, avatar = :avatar WHERE id = :id";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':nombre', $nombre);
+            $sentencia->bindParam(':email', $email);
+            $sentencia->bindParam(':provincia', $provincia);
+            $sentencia->bindParam(':direccion', $direccion);
+            $sentencia->bindParam(':codPostal', $codPostal);
+            $sentencia->bindParam(':telefono', $telefono);
+            $sentencia->bindParam(':avatar', $avatar);
+            $sentencia->bindParam(':id', $id);
+        }
+
+        // 4. Con password y avatar
+        else if ($password != '' && $avatar != '') {
+            $consulta = "UPDATE usuarios SET nombreApellidos = :nombre, email = :email, password = :password, provincia = :provincia, direccion = :direccion, codPostal = :codPostal, telefono = :telefono, avatar = :avatar WHERE id = :id";
+            $sentencia = $this->conn->prepare($consulta);
+            $sentencia->bindParam(':nombre', $nombre);
+            $sentencia->bindParam(':email', $email);
+            $sentencia->bindParam(':password', $password);
+            $sentencia->bindParam(':provincia', $provincia);
+            $sentencia->bindParam(':direccion', $direccion);
+            $sentencia->bindParam(':codPostal', $codPostal);
+            $sentencia->bindParam(':telefono', $telefono);
+            $sentencia->bindParam(':avatar', $avatar);
+            $sentencia->bindParam(':id', $id);
+        }
+
+        return $sentencia->execute();
+    } catch (\PDOException $e) {
+        return NULL;
+    }
     }
 }

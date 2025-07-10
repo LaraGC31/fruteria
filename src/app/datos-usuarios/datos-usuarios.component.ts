@@ -21,6 +21,16 @@ export class DatosUsuariosComponent implements OnInit {
 data:any = '';
 datos:any;
 passwordNueva:any = '';
+timestamp:any;
+avatarList = [
+  '../../assets/avatar1.avif',
+  '../../assets/avatar2.jpg',
+  '../../assets/avatar3.jpg',
+  '../../assets/avatar4.webp',
+  '../../assets/avatar5.webp',
+  '../../assets/avatar6.jpg'
+];
+avatarSeleccionado:any = '';
 constructor(private usuarioService: UsuarioService, private dataService: DataSignalService,
   private router: Router,
   private location: Location, private PedidosService: PedidosService) {}
@@ -33,8 +43,12 @@ constructor(private usuarioService: UsuarioService, private dataService: DataSig
     if (typeof this.passwordNueva == 'undefined' || this.passwordNueva == null || this.passwordNueva == "") {
       this.passwordNueva = "";
     }
-    this.usuarioService.modificarUsuarios(this.data.nombreApellidos, this.data.email, this.passwordNueva,this.data.provincia, this.data.direccion, this.data.codPostal, this.data.telefono, this.usuarioId ).subscribe(data => {
+     if (typeof this.avatarSeleccionado == 'undefined' || this.avatarSeleccionado == null || this.avatarSeleccionado == "") {
+      this.avatarSeleccionado = "";
+    }
+    this.usuarioService.modificarUsuarios(this.data.nombreApellidos, this.data.email, this.passwordNueva,this.data.provincia, this.data.direccion, this.data.codPostal, this.data.telefono, this.usuarioId, this.avatarSeleccionado, this.data.avatar ).subscribe(data => {
    window.location.reload();
+ 
     });
   }
 get usuarioEmail(): string{
@@ -49,6 +63,9 @@ get usuarioNombre(): string{
 get usuarioRol():string {
   return this.dataService.getRol();
 }
+  get usuarioAvatar():string {
+    return this.dataService.getAvatar();
+  }
 datosUsuarios(){
   this.usuarioService.datosUsuarios(this.usuarioId).subscribe((data)=>{
     this.data = data;

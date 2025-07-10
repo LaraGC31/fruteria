@@ -16,6 +16,7 @@ email:string = '';
 password:string = '';
 nombre:string ='';
 rol:string ='';
+avatar:string = '';
 errores:string = '';
 usuario:any = {};
 @Output() enviarUsuario = new EventEmitter<any>();
@@ -43,6 +44,7 @@ onSubmit(): void {
     this.id = data.id;
     this.nombre = data.nombre;
     this.rol = data.rol;
+    this.avatar = data.avatar;
     this.guardarUsuario(data);
     this.router.navigate(['/inicio']); 
     }else{
@@ -57,10 +59,13 @@ guardarUsuario(usuario: any) {
     localStorage.setItem('nombreApellidos', usuario.nombre);
     localStorage.setItem('rol', usuario.rol);
     localStorage.setItem('password', usuario.password);
+    localStorage.setItem('avatar', usuario.avatar);
+
   }
   this.dataSignalService.setId(this.id);
   this.dataSignalService.setEmail(this.email);
   this.dataSignalService.setNombre(this.nombre);
   this.dataSignalService.setRol(this.rol);
+  this.dataSignalService.setAvatar(this.avatar);
 }
 }

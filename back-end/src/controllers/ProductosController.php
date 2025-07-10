@@ -69,6 +69,52 @@ class ProductosController
             echo json_encode($productosModel->getProductosByFruta());
         }
     }
+    public function getObtenerProductosByNombre()
+    {
+        if (
+            !isset($_SERVER['HTTP_ORIGIN']) ||
+            $_SERVER['HTTP_ORIGIN'] !== 'http://localhost:4200'
+        ) {
+            http_response_code(403);
+            exit('Origen no autorizado');
+        } else {
+            $nombre = $_GET["nombre"]?? "";
+            $productosModel = new ProductosModel();
+
+            header('Content-Type: application/json');
+            echo json_encode($productosModel->getObtenerProductosByNombre($nombre));
+        }
+    }
+     public function getNombreProductosFruta()
+    {
+        if (
+            !isset($_SERVER['HTTP_ORIGIN']) ||
+            $_SERVER['HTTP_ORIGIN'] !== 'http://localhost:4200'
+        ) {
+            http_response_code(403);
+            exit('Origen no autorizado');
+        } else {
+
+            $productosModel = new ProductosModel();
+            header('Content-Type: application/json');
+            echo json_encode($productosModel->getNombreProductosFruta());
+        }
+    }
+     public function getNombreProductosVerdura()
+    {
+        if (
+            !isset($_SERVER['HTTP_ORIGIN']) ||
+            $_SERVER['HTTP_ORIGIN'] !== 'http://localhost:4200'
+        ) {
+            http_response_code(403);
+            exit('Origen no autorizado');
+        } else {
+
+            $productosModel = new ProductosModel();
+            header('Content-Type: application/json');
+            echo json_encode($productosModel->getNombreProductosVerdura());
+        }
+    }
     public function getProductosByVerdura()
     {
         if (
@@ -181,5 +227,28 @@ class ProductosController
                 echo json_encode(["puedeEliminar" => false, "mensaje" => "No se puede eliminar: el producto está en un carrito o pedido."]);
             }
         }
+    }
+    public function getModificarProductos()
+    {
+        if (
+            !isset($_SERVER['HTTP_ORIGIN']) ||
+            $_SERVER['HTTP_ORIGIN'] !== 'http://localhost:4200'
+        ) {
+            http_response_code(403);
+            exit('Origen no autorizado');
+        } else {
+            $id = $_GET["id"]?? "";
+            $nombre = $_GET["nombre"] ?? "";
+            $descripcion = $_GET["descripcion"] ?? "";
+            $precio = $_GET["precio"] ?? "";
+ 
+          
+
+                $incidenciasModel = new ProductosModel();
+           $dataRegistros =   $incidenciasModel->getModificarProductos($id, $nombre, $descripcion, $precio);
+            }
+
+            header('Content-Type: application/json');
+            echo json_encode($dataRegistros);
     }
 }

@@ -21,6 +21,11 @@ import { VerBloqueadosFrutaComponent } from './ver-bloqueados-fruta/ver-bloquead
 import { VerBloqueadosVerduraComponent } from './ver-bloqueados-verdura/ver-bloqueados-verdura.component';
 import { MVerBloqueadosFrutaComponent } from './mobile-component/m-ver-bloqueados-fruta/m-ver-bloqueados-fruta.component';
 import { MVerBloqueadosVerduraComponent } from './mobile-component/m-ver-bloqueados-verdura/m-ver-bloqueados-verdura.component';
+import { MModificarFrutaComponent } from './mobile-component/m-modificar-fruta/m-modificar-fruta.component';
+import { ModificarFrutaComponent } from './modificar-fruta/modificar-fruta.component';
+import { MModificarVerduraComponent } from './mobile-component/m-modificar-verdura/m-modificar-verdura.component';
+import { ModificarVerduraComponent } from './modificar-verdura/modificar-verdura.component';
+
 export const routes: Routes = [
 {path:"verdura", component:VerduraComponent},    
 {path:"fruta", component:FrutaComponent},   
@@ -44,5 +49,10 @@ export const routes: Routes = [
 {path:"verBloqueadosfruta", component: VerBloqueadosFrutaComponent},  
 {path:"verBloqueadosverdura", component: VerBloqueadosVerduraComponent},  
 {path:"mverBloqueadosfruta", component: MVerBloqueadosFrutaComponent},  
-{path:"mverBloqueadosverdura", component: MVerBloqueadosVerduraComponent}
+{path:"mverBloqueadosverdura", component: MVerBloqueadosVerduraComponent},
+{path:"modificarFruta", component: ModificarFrutaComponent},
+{path:"mmodificarFruta", component: MModificarFrutaComponent},
+{path:"modificarVerdura", component: ModificarVerduraComponent},
+{path:"mmodificarVerdura", component: MModificarVerduraComponent}
+
 ];

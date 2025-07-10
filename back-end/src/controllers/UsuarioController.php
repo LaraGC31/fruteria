@@ -34,6 +34,7 @@ class UsuarioController
                         "direccion" => $usuario->direccion,
                         "codPostal" => $usuario->codPostal,
                         "telefono" => $usuario->telefono,
+                        "avatar" => $usuario->avatar,
                     );
                 } else {
                     $data = false;
@@ -68,18 +69,32 @@ class UsuarioController
             $direccion = $_GET["direccion"] ?? "";
             $codPostal = $_GET["codPostal"] ?? "";
             $provincia = $_GET["provincia"] ?? "";
+              $nombreAvatarSeleccionado = $_GET['avatar'] ?? "";
+$nombreBaseAvatar = basename($nombreAvatarSeleccionado); 
 
+
+    $nombreFinal = time() . "_" . rand(1000000, 9999999) . $nombreBaseAvatar;
+    $rutaOrigen =    dirname(__DIR__, 2)  . "/../src/assets/" . $nombreBaseAvatar;
+    $rutaDestino =  dirname(dirname(__DIR__)) .  "/assets/avatar/" . $nombreFinal;
+ 
+  
             $dataRegistro = [
                 "status" => false,
                 "errores" => []
             ];
-            if (!Validaciones::validateName($_GET['nombre'])) $dataRegistro["errores"]['nombre'] = "Formato nombre no válido";
+       if (!Validaciones::validateName($_GET['nombre'])) $dataRegistro["errores"]['nombre'] = "Formato nombre no válido";
 
             if (!Validaciones::validateEmail($_GET['email'])) $dataRegistro["errores"]['email'] = "Formato email no válido";
             if (!Validaciones::validateFormatPassword($_GET['password'])) $dataRegistro["errores"]['password'] = "Formato contraseña no válido";
             if (!Validaciones::validarCodigoPostal($_GET['codPostal'])) $dataRegistro["errores"]['codPostal'] = "Formato codPostal no válido";
             if (!Validaciones::validateTelefono($_GET['telefono'])) $dataRegistro["errores"]['telefono'] = "Formato telefono no válido";
             if (empty($dataRegistro["errores"])) {
+                     if (!file_exists($rutaOrigen)) {
+    $dataRegistro["errores"]["avatar"] = "El archivo de avatar no existe en el servidor.";
+} elseif (!copy($rutaOrigen, $rutaDestino)) {
+    $dataRegistro["errores"]["avatar"] = "No se pudo copiar el avatar al servidor.";
+} else {
+            
                 $passwordSecure =  password_hash($password, PASSWORD_DEFAULT);
                 $atributos = array(
                     $nombreMod,
@@ -89,13 +104,15 @@ class UsuarioController
                     $provincia,
                     $direccion,
                     $codPostal,
-                    $telefono
+                    $telefono,
+                    $nombreFinal
                 );
                 $usuarioModel = new UsuarioModel();
                 $usuarioModel->aniadirUsuario($atributos);
 
                 $dataRegistro["status"] = true;
             }
+        }
             header('Content-Type: application/json');
             echo json_encode($dataRegistro);
         }
@@ -140,8 +157,33 @@ class UsuarioController
             $direccion = $_GET["direccion"] ?? "";
             $codPostal = $_GET["codPostal"] ?? "";
             $provincia = $_GET["provincia"] ?? "";
-            $usuarioModel = new UsuarioModel();
-            $usuarioModel->modificarUsuario($nombreMod, $email, $passwordSecure, $provincia, $direccion, $codPostal, $telefono, $id);
-        }
+               $nombreAvatarSeleccionado = $_GET['avatar'] ?? "";
+              $avatarActual = $_GET['avatarActual']??"";
+                $usuarioModel = new UsuarioModel();
+
+ if ($nombreAvatarSeleccionado != "" && $nombreAvatarSeleccionado != $avatarActual) {
+    // Ha seleccionado un nuevo avatar
+    $nombreBaseAvatar = basename($nombreAvatarSeleccionado);
+    $nombreFinal = time() . "_" . rand(100000, 999999) . "_" . $nombreBaseAvatar;
+    
+    $rutaOrigen = dirname(__DIR__, 2) . "/../src/assets/" . $nombreBaseAvatar;
+    $rutaDestino = dirname(dirname(__DIR__)) . "/assets/avatar/" . $nombreFinal;
+
+    if (!file_exists($rutaOrigen)) {
+        $dataRegistro["errores"]['avatar'] = "El archivo de avatar no existe en el servidor.";
+    } elseif (!is_file($rutaOrigen)) {
+        $dataRegistro["errores"]['avatar'] = "La ruta del avatar no es un archivo válido.";
+    } elseif (!copy($rutaOrigen, $rutaDestino)) {
+        $dataRegistro["errores"]['avatar'] = "No se pudo copiar el avatar al servidor.";
+    } else {
+        // Copiado exitoso
+        $usuarioModel->modificarUsuario($nombreMod, $email, $passwordSecure, $provincia, $direccion, $codPostal, $telefono, $id, $nombreFinal);
+    }
+} else {
+    // No se seleccionó nuevo avatar → mantener el anterior
+    $usuarioModel->modificarUsuario($nombreMod, $email, $passwordSecure, $provincia, $direccion, $codPostal, $telefono, $id, $avatarActual);
+}
+
+    }
     }
 }

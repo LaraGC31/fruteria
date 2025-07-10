@@ -8,6 +8,7 @@ export class DataSignalService {
   private email = signal(localStorage.getItem('email') || ''); 
   private nombre = signal(localStorage.getItem('nombreApellidos') || ''); 
   private rol = signal(localStorage.getItem('rol') || ''); 
+  private avatar = signal(localStorage.getItem('avatar') || ''); 
 
   private id = signal<number | null>(localStorage.getItem('id') ? parseInt(localStorage.getItem('id')!) : null);  
 
@@ -49,10 +50,20 @@ export class DataSignalService {
     localStorage.setItem('rol', rol);  
   }
 
-  
   getRol(): string {
     return this.rol();  
+  } 
+  getAvatar(): string {
+    return this.avatar();  
   }
+  
+   setAvatar(avatar: string): void {
+    this.avatar.set(avatar);
+    localStorage.setItem('avatar', avatar);  
+  }
+
+  
+  
   
   setIncidenciaId(id: string): void {
     this.incidenciaId.set(id);
